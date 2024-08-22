@@ -18,6 +18,7 @@
 		187961382C76086800B573F7 /* CryptoTabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961372C76086800B573F7 /* CryptoTabUITests.swift */; };
 		1879613A2C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961392C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift */; };
 		187961482C77281800B573F7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961472C77281800B573F7 /* NetworkService.swift */; };
+		187961692C776ABB00B573F7 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961682C776ABB00B573F7 /* CoinModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		187961372C76086800B573F7 /* CryptoTabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTabUITests.swift; sourceTree = "<group>"; };
 		187961392C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTabUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		187961472C77281800B573F7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		187961682C776ABB00B573F7 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,6 @@
 				1879614B2C77601400B573F7 /* SupportingFiles */,
 				1879614A2C77600700B573F7 /* Resources */,
 				187961492C775FFB00B573F7 /* Common */,
-				187961462C7727F600B573F7 /* NetworkService */,
 				187961172C76086500B573F7 /* ViewController.swift */,
 				187961192C76086500B573F7 /* Main.storyboard */,
 				187961212C76086800B573F7 /* LaunchScreen.storyboard */,
@@ -136,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				187961472C77281800B573F7 /* NetworkService.swift */,
+				187961682C776ABB00B573F7 /* CoinModel.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -143,6 +145,7 @@
 		187961492C775FFB00B573F7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				187961462C7727F600B573F7 /* NetworkService */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				187961182C76086500B573F7 /* ViewController.swift in Sources */,
 				187961142C76086500B573F7 /* AppDelegate.swift in Sources */,
 				1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */,
+				187961692C776ABB00B573F7 /* CoinModel.swift in Sources */,
 				187961162C76086500B573F7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
