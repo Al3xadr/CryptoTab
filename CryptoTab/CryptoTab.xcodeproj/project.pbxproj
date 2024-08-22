@@ -17,6 +17,7 @@
 		1879612E2C76086800B573F7 /* CryptoTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879612D2C76086800B573F7 /* CryptoTabTests.swift */; };
 		187961382C76086800B573F7 /* CryptoTabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961372C76086800B573F7 /* CryptoTabUITests.swift */; };
 		1879613A2C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961392C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift */; };
+		187961482C77281800B573F7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961472C77281800B573F7 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		187961332C76086800B573F7 /* CryptoTabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoTabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		187961372C76086800B573F7 /* CryptoTabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTabUITests.swift; sourceTree = "<group>"; };
 		187961392C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTabUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		187961472C77281800B573F7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +103,14 @@
 		187961122C76086500B573F7 /* CryptoTab */ = {
 			isa = PBXGroup;
 			children = (
-				187961132C76086500B573F7 /* AppDelegate.swift */,
-				187961152C76086500B573F7 /* SceneDelegate.swift */,
+				1879614F2C77625000B573F7 /* Modules */,
+				1879614B2C77601400B573F7 /* SupportingFiles */,
+				1879614A2C77600700B573F7 /* Resources */,
+				187961492C775FFB00B573F7 /* Common */,
+				187961462C7727F600B573F7 /* NetworkService */,
 				187961172C76086500B573F7 /* ViewController.swift */,
 				187961192C76086500B573F7 /* Main.storyboard */,
-				1879611F2C76086800B573F7 /* Assets.xcassets */,
 				187961212C76086800B573F7 /* LaunchScreen.storyboard */,
-				187961242C76086800B573F7 /* Info.plist */,
-				1879611C2C76086500B573F7 /* CryptoTab.xcdatamodeld */,
 			);
 			path = CryptoTab;
 			sourceTree = "<group>";
@@ -128,6 +130,215 @@
 				187961392C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift */,
 			);
 			path = CryptoTabUITests;
+			sourceTree = "<group>";
+		};
+		187961462C7727F600B573F7 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				187961472C77281800B573F7 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		187961492C775FFB00B573F7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1879614A2C77600700B573F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1879611C2C76086500B573F7 /* CryptoTab.xcdatamodeld */,
+				1879611F2C76086800B573F7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1879614B2C77601400B573F7 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				187961242C76086800B573F7 /* Info.plist */,
+				187961152C76086500B573F7 /* SceneDelegate.swift */,
+				187961132C76086500B573F7 /* AppDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		1879614F2C77625000B573F7 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				187961532C77627F00B573F7 /* Main */,
+				187961522C77627800B573F7 /* Wallet */,
+				187961512C77626800B573F7 /* Settings */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		187961512C77626800B573F7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				187961662C77637E00B573F7 /* View */,
+				187961652C77637200B573F7 /* Interactor */,
+				187961642C77636A00B573F7 /* Presenter */,
+				187961632C77636100B573F7 /* Entity */,
+				187961622C77635500B573F7 /* Router */,
+				187961612C77634B00B573F7 /* Protocols */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		187961522C77627800B573F7 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				187961602C77634000B573F7 /* View */,
+				1879615F2C77633600B573F7 /* Interactor */,
+				1879615E2C77632A00B573F7 /* Presenter */,
+				1879615D2C77632000B573F7 /* Entity */,
+				1879615C2C77631800B573F7 /* Router */,
+				1879615B2C77630E00B573F7 /* Protocols */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		187961532C77627F00B573F7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1879615A2C7762F400B573F7 /* View */,
+				187961592C7762E600B573F7 /* Interactor */,
+				187961572C7762C100B573F7 /* Presenter */,
+				187961562C7762B700B573F7 /* Entity */,
+				187961552C7762AC00B573F7 /* Router */,
+				187961542C77629800B573F7 /* Protocols */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		187961542C77629800B573F7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		187961552C7762AC00B573F7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		187961562C7762B700B573F7 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		187961572C7762C100B573F7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		187961592C7762E600B573F7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1879615A2C7762F400B573F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1879615B2C77630E00B573F7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1879615C2C77631800B573F7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1879615D2C77632000B573F7 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1879615E2C77632A00B573F7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1879615F2C77633600B573F7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		187961602C77634000B573F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		187961612C77634B00B573F7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		187961622C77635500B573F7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		187961632C77636100B573F7 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		187961642C77636A00B573F7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		187961652C77637200B573F7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		187961662C77637E00B573F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187961482C77281800B573F7 /* NetworkService.swift in Sources */,
 				187961182C76086500B573F7 /* ViewController.swift in Sources */,
 				187961142C76086500B573F7 /* AppDelegate.swift in Sources */,
 				1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */,
@@ -447,12 +659,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CryptoTab/Info.plist;
+				INFOPLIST_FILE = CryptoTab/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -474,12 +687,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CryptoTab/Info.plist;
+				INFOPLIST_FILE = CryptoTab/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
