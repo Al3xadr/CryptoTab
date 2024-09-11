@@ -8,7 +8,7 @@
 import Foundation
 
 
-class NetworkService: NetworkServiceProtocols {
+final class NetworkService: NetworkServiceProtocols {
     
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
