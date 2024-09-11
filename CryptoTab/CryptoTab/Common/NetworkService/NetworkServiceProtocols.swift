@@ -14,6 +14,6 @@ protocol NetworkServiceProtocols {
                                httpMethod: HTTPMethod,
                                body: Encodable?,
                                headers: [String: String]?,
-                               complition: @escaping(Result<T, NetworkError>)
+                               completion: @escaping(Result<T, NetworkError>)
                                -> Void  )
 }
