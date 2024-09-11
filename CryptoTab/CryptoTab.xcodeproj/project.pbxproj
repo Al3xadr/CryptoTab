@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180BB2CB2C919F8800FB4F79 /* InteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2CA2C919F8800FB4F79 /* InteractorProtocol.swift */; };
+		180BB2CD2C919FAD00FB4F79 /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2CC2C919FAD00FB4F79 /* PresenterProtocol.swift */; };
+		180BB2CF2C919FD200FB4F79 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2CE2C919FD200FB4F79 /* MainInteractor.swift */; };
+		180BB2D12C91A0CF00FB4F79 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2D02C91A0CF00FB4F79 /* MainPresenter.swift */; };
+		180BB2D32C91A0FB00FB4F79 /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2D22C91A0FB00FB4F79 /* MainViewProtocol.swift */; };
+		180BB2D52C91A14900FB4F79 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2D42C91A14900FB4F79 /* MainView.swift */; };
+		180BB2DA2C91B78500FB4F79 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2D92C91B78500FB4F79 /* MainRouter.swift */; };
+		180BB2DC2C91B79700FB4F79 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2DB2C91B79700FB4F79 /* MainRouterProtocol.swift */; };
 		187961142C76086500B573F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961132C76086500B573F7 /* AppDelegate.swift */; };
 		187961162C76086500B573F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961152C76086500B573F7 /* SceneDelegate.swift */; };
-		187961182C76086500B573F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961172C76086500B573F7 /* ViewController.swift */; };
 		1879611B2C76086500B573F7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1879611A2C76086500B573F7 /* Base */; };
 		1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1879611C2C76086500B573F7 /* CryptoTab.xcdatamodeld */; };
 		187961202C76086800B573F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1879611F2C76086800B573F7 /* Assets.xcassets */; };
@@ -43,10 +50,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180BB2CA2C919F8800FB4F79 /* InteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorProtocol.swift; sourceTree = "<group>"; };
+		180BB2CC2C919FAD00FB4F79 /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
+		180BB2CE2C919FD200FB4F79 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		180BB2D02C91A0CF00FB4F79 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		180BB2D22C91A0FB00FB4F79 /* MainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
+		180BB2D42C91A14900FB4F79 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		180BB2D92C91B78500FB4F79 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		180BB2DB2C91B79700FB4F79 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
 		187961102C76086500B573F7 /* CryptoTab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187961132C76086500B573F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187961152C76086500B573F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		187961172C76086500B573F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1879611A2C76086500B573F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1879611D2C76086500B573F7 /* CryptoTab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoTab.xcdatamodel; sourceTree = "<group>"; };
 		1879611F2C76086800B573F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +104,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180BB2C12C919D3800FB4F79 /* Moduls */ = {
+			isa = PBXGroup;
+			children = (
+				180BB2C22C919D4600FB4F79 /* Main */,
+			);
+			path = Moduls;
+			sourceTree = "<group>";
+		};
+		180BB2C22C919D4600FB4F79 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				180BB2C82C919DEB00FB4F79 /* Router */,
+				180BB2C72C919DE300FB4F79 /* Entity */,
+				180BB2C92C919DF400FB4F79 /* Interactor */,
+				180BB2C62C919DD800FB4F79 /* Presenter */,
+				180BB2C32C919D4E00FB4F79 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		180BB2C32C919D4E00FB4F79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				180BB2D22C91A0FB00FB4F79 /* MainViewProtocol.swift */,
+				180BB2D42C91A14900FB4F79 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		180BB2C62C919DD800FB4F79 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				180BB2CC2C919FAD00FB4F79 /* PresenterProtocol.swift */,
+				180BB2D02C91A0CF00FB4F79 /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		180BB2C72C919DE300FB4F79 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				187961682C776ABB00B573F7 /* CoinModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		180BB2C82C919DEB00FB4F79 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				180BB2DB2C91B79700FB4F79 /* MainRouterProtocol.swift */,
+				180BB2D92C91B78500FB4F79 /* MainRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		180BB2C92C919DF400FB4F79 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				180BB2CA2C919F8800FB4F79 /* InteractorProtocol.swift */,
+				180BB2CE2C919FD200FB4F79 /* MainInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		187961072C76086500B573F7 = {
 			isa = PBXGroup;
 			children = (
@@ -113,11 +191,10 @@
 		187961122C76086500B573F7 /* CryptoTab */ = {
 			isa = PBXGroup;
 			children = (
-				1879614F2C77625000B573F7 /* Modules */,
+				180BB2C12C919D3800FB4F79 /* Moduls */,
 				1879614B2C77601400B573F7 /* SupportingFiles */,
 				1879614A2C77600700B573F7 /* Resources */,
 				187961492C775FFB00B573F7 /* Common */,
-				187961172C76086500B573F7 /* ViewController.swift */,
 				187961192C76086500B573F7 /* Main.storyboard */,
 				187961212C76086800B573F7 /* LaunchScreen.storyboard */,
 			);
@@ -145,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				187961472C77281800B573F7 /* NetworkService.swift */,
-				187961682C776ABB00B573F7 /* CoinModel.swift */,
 				187961742C78936E00B573F7 /* NetworkServiceProtocols.swift */,
 				187961762C78938700B573F7 /* NetworkServiceURL.swift */,
 				187961782C78939E00B573F7 /* NetworkServiceHTTPMethod.swift */,
@@ -179,181 +255,6 @@
 				187961132C76086500B573F7 /* AppDelegate.swift */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		1879614F2C77625000B573F7 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				187961532C77627F00B573F7 /* Main */,
-				187961522C77627800B573F7 /* Wallet */,
-				187961512C77626800B573F7 /* Settings */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		187961512C77626800B573F7 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				187961662C77637E00B573F7 /* View */,
-				187961652C77637200B573F7 /* Interactor */,
-				187961642C77636A00B573F7 /* Presenter */,
-				187961632C77636100B573F7 /* Entity */,
-				187961622C77635500B573F7 /* Router */,
-				187961612C77634B00B573F7 /* Protocols */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		187961522C77627800B573F7 /* Wallet */ = {
-			isa = PBXGroup;
-			children = (
-				187961602C77634000B573F7 /* View */,
-				1879615F2C77633600B573F7 /* Interactor */,
-				1879615E2C77632A00B573F7 /* Presenter */,
-				1879615D2C77632000B573F7 /* Entity */,
-				1879615C2C77631800B573F7 /* Router */,
-				1879615B2C77630E00B573F7 /* Protocols */,
-			);
-			path = Wallet;
-			sourceTree = "<group>";
-		};
-		187961532C77627F00B573F7 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				1879615A2C7762F400B573F7 /* View */,
-				187961592C7762E600B573F7 /* Interactor */,
-				187961572C7762C100B573F7 /* Presenter */,
-				187961562C7762B700B573F7 /* Entity */,
-				187961552C7762AC00B573F7 /* Router */,
-				187961542C77629800B573F7 /* Protocols */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		187961542C77629800B573F7 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		187961552C7762AC00B573F7 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		187961562C7762B700B573F7 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		187961572C7762C100B573F7 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		187961592C7762E600B573F7 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1879615A2C7762F400B573F7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1879615B2C77630E00B573F7 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		1879615C2C77631800B573F7 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		1879615D2C77632000B573F7 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1879615E2C77632A00B573F7 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		1879615F2C77633600B573F7 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		187961602C77634000B573F7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		187961612C77634B00B573F7 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		187961622C77635500B573F7 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		187961632C77636100B573F7 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		187961642C77636A00B573F7 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		187961652C77637200B573F7 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		187961662C77637E00B573F7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,14 +390,21 @@
 			files = (
 				187961772C78938700B573F7 /* NetworkServiceURL.swift in Sources */,
 				187961482C77281800B573F7 /* NetworkService.swift in Sources */,
-				187961182C76086500B573F7 /* ViewController.swift in Sources */,
+				180BB2D32C91A0FB00FB4F79 /* MainViewProtocol.swift in Sources */,
 				187961142C76086500B573F7 /* AppDelegate.swift in Sources */,
+				180BB2DC2C91B79700FB4F79 /* MainRouterProtocol.swift in Sources */,
+				180BB2CF2C919FD200FB4F79 /* MainInteractor.swift in Sources */,
 				1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */,
 				1879617B2C7893CA00B573F7 /* NetworkServiceError.swift in Sources */,
 				187961692C776ABB00B573F7 /* CoinModel.swift in Sources */,
+				180BB2D52C91A14900FB4F79 /* MainView.swift in Sources */,
+				180BB2CB2C919F8800FB4F79 /* InteractorProtocol.swift in Sources */,
+				180BB2D12C91A0CF00FB4F79 /* MainPresenter.swift in Sources */,
 				187961792C78939E00B573F7 /* NetworkServiceHTTPMethod.swift in Sources */,
+				180BB2CD2C919FAD00FB4F79 /* PresenterProtocol.swift in Sources */,
 				187961752C78936E00B573F7 /* NetworkServiceProtocols.swift in Sources */,
 				187961162C76086500B573F7 /* SceneDelegate.swift in Sources */,
+				180BB2DA2C91B78500FB4F79 /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
