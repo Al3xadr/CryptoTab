@@ -8,5 +8,5 @@
 import UIKit
 
 protocol MainRouterProtocol {
-    static func createModule(with coinModel: Welcome) -> UIViewController
+    
 }

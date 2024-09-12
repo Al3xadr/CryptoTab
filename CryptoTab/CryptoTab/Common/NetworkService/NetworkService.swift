@@ -12,6 +12,7 @@ final class NetworkService: NetworkServiceProtocols {
     
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
+    private let session = URLSession(configuration: .default)
     
     func fetchData<T>(url: URL,
                       httpMethod: HTTPMethod,
@@ -36,7 +37,7 @@ final class NetworkService: NetworkServiceProtocols {
         }
         
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil  else {
                 return completion(.failure(NetworkError.badData))
             }

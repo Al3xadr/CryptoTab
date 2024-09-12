@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: windowScene)
-        let initialViewController = MainRouter.createModule(with: Welcome(coins: [], nfts: [], categories: []))
+        let initialViewController = MainAssembly.createModule(with: Welcome(coins: [], nfts: [], categories: []))
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     

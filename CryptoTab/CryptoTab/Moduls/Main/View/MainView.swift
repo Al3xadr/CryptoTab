@@ -9,8 +9,8 @@
 import UIKit
 
 final class MainView: UIViewController, MainViewProtocol {
-    var presenter: MainPresenterProtocol?
-    private var interactor: MainInteractor?
+    weak var presenter: MainPresenterProtocol?
+    var interactor: MainInteractor?
     
     init(presenter: MainPresenterProtocol, interactor: MainInteractor) {
         self.presenter = presenter

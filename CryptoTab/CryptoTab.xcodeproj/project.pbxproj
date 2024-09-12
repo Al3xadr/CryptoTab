@@ -30,6 +30,8 @@
 		187961772C78938700B573F7 /* NetworkServiceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961762C78938700B573F7 /* NetworkServiceURL.swift */; };
 		187961792C78939E00B573F7 /* NetworkServiceHTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961782C78939E00B573F7 /* NetworkServiceHTTPMethod.swift */; };
 		1879617B2C7893CA00B573F7 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879617A2C7893CA00B573F7 /* NetworkServiceError.swift */; };
+		189CDCF62C92D54000D9E927 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189CDCF52C92D54000D9E927 /* MainAssembly.swift */; };
+		189CDCF82C92D57100D9E927 /* MainAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189CDCF72C92D57100D9E927 /* MainAssemblyProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		187961762C78938700B573F7 /* NetworkServiceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceURL.swift; sourceTree = "<group>"; };
 		187961782C78939E00B573F7 /* NetworkServiceHTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceHTTPMethod.swift; sourceTree = "<group>"; };
 		1879617A2C7893CA00B573F7 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		189CDCF52C92D54000D9E927 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
+		189CDCF72C92D57100D9E927 /* MainAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssemblyProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		180BB2C22C919D4600FB4F79 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				189CDCF42C92D53200D9E927 /* MainAssembly */,
 				180BB2C82C919DEB00FB4F79 /* Router */,
 				180BB2C72C919DE300FB4F79 /* Entity */,
 				180BB2C92C919DF400FB4F79 /* Interactor */,
@@ -257,6 +262,15 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		189CDCF42C92D53200D9E927 /* MainAssembly */ = {
+			isa = PBXGroup;
+			children = (
+				189CDCF72C92D57100D9E927 /* MainAssemblyProtocol.swift */,
+				189CDCF52C92D54000D9E927 /* MainAssembly.swift */,
+			);
+			path = MainAssembly;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,12 +406,14 @@
 				187961482C77281800B573F7 /* NetworkService.swift in Sources */,
 				180BB2D32C91A0FB00FB4F79 /* MainViewProtocol.swift in Sources */,
 				187961142C76086500B573F7 /* AppDelegate.swift in Sources */,
+				189CDCF82C92D57100D9E927 /* MainAssemblyProtocol.swift in Sources */,
 				180BB2DC2C91B79700FB4F79 /* MainRouterProtocol.swift in Sources */,
 				180BB2CF2C919FD200FB4F79 /* MainInteractor.swift in Sources */,
 				1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */,
 				1879617B2C7893CA00B573F7 /* NetworkServiceError.swift in Sources */,
 				187961692C776ABB00B573F7 /* CoinModel.swift in Sources */,
 				180BB2D52C91A14900FB4F79 /* MainView.swift in Sources */,
+				189CDCF62C92D54000D9E927 /* MainAssembly.swift in Sources */,
 				180BB2CB2C919F8800FB4F79 /* InteractorProtocol.swift in Sources */,
 				180BB2D12C91A0CF00FB4F79 /* MainPresenter.swift in Sources */,
 				187961792C78939E00B573F7 /* NetworkServiceHTTPMethod.swift in Sources */,
