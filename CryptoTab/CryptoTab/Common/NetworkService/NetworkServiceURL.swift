@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum API {
     private static let baseURL = "https://api.coingecko.com/api/v3"
 
@@ -24,4 +23,3 @@ enum API {
         return URL(string: API.baseURL + endpoint)
     }
 }
-
