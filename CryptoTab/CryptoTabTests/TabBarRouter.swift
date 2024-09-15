@@ -31,9 +31,12 @@ final class TabBarRouter: TabBarRouterProtocol {
         presenter.view = tabBarView
         presenter.router = router
         
-        let firstModule = MainRouter.createModule(with: Welcome(coins: [], nfts: [], categories: []))
+        let mainModule = MainRouter.createModule(with: Welcome(coins: [], nfts: [], categories: []))
+        let NFTsModule = NFTsRouter.createModule()
+        let portfolioModule = PortfolioRouter.createModule()
+        let settingModule = SettingRouter.createModule()
 
-        tabBarView.viewControllers = [firstModule]
+        tabBarView.viewControllers = [mainModule, NFTsModule, portfolioModule, settingModule]
         
         return tabBarView
     }

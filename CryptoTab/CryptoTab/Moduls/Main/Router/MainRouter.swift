@@ -29,7 +29,7 @@ final class MainRouter: MainRouterProtocol {
         viewController.presenter = presenter
         
         let navController = UINavigationController(rootViewController: viewController)
-             navController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+             navController.tabBarItem = UITabBarItem(title: "Main", image: UIImage(systemName: "house"), tag: 0)
         return navController
     }
 }
