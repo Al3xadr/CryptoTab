@@ -9,5 +9,6 @@ import Foundation
 
 protocol TabBarInteractorInputProtocol: AnyObject {
     var presenter: TabBarInteractorOutputProtocol? { get set }
+    
 }
 protocol TabBarInteractorOutputProtocol: AnyObject {}
