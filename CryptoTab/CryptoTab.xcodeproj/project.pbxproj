@@ -17,10 +17,8 @@
 		180BB2DC2C91B79700FB4F79 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BB2DB2C91B79700FB4F79 /* MainRouterProtocol.swift */; };
 		187961142C76086500B573F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961132C76086500B573F7 /* AppDelegate.swift */; };
 		187961162C76086500B573F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961152C76086500B573F7 /* SceneDelegate.swift */; };
-		1879611B2C76086500B573F7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1879611A2C76086500B573F7 /* Base */; };
 		1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1879611C2C76086500B573F7 /* CryptoTab.xcdatamodeld */; };
 		187961202C76086800B573F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1879611F2C76086800B573F7 /* Assets.xcassets */; };
-		187961232C76086800B573F7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 187961222C76086800B573F7 /* Base */; };
 		1879612E2C76086800B573F7 /* CryptoTabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879612D2C76086800B573F7 /* CryptoTabTests.swift */; };
 		187961382C76086800B573F7 /* CryptoTabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961372C76086800B573F7 /* CryptoTabUITests.swift */; };
 		1879613A2C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961392C76086800B573F7 /* CryptoTabUITestsLaunchTests.swift */; };
@@ -30,8 +28,14 @@
 		187961772C78938700B573F7 /* NetworkServiceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961762C78938700B573F7 /* NetworkServiceURL.swift */; };
 		187961792C78939E00B573F7 /* NetworkServiceHTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187961782C78939E00B573F7 /* NetworkServiceHTTPMethod.swift */; };
 		1879617B2C7893CA00B573F7 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879617A2C7893CA00B573F7 /* NetworkServiceError.swift */; };
-		189CDCF62C92D54000D9E927 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189CDCF52C92D54000D9E927 /* MainAssembly.swift */; };
-		189CDCF82C92D57100D9E927 /* MainAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189CDCF72C92D57100D9E927 /* MainAssemblyProtocol.swift */; };
+		18B179832C95650E00721516 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179822C95650E00721516 /* TabBarViewController.swift */; };
+		18B179852C9565AE00721516 /* TabBarPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179842C9565AE00721516 /* TabBarPresenterProtocol.swift */; };
+		18B179872C9565BC00721516 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179862C9565BC00721516 /* TabBarPresenter.swift */; };
+		18B179892C95661500721516 /* TabBarInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179882C95661500721516 /* TabBarInteractorProtocol.swift */; };
+		18B1798B2C95661F00721516 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1798A2C95661F00721516 /* TabBarInteractor.swift */; };
+		18B1798D2C95666400721516 /* TabBarRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1798C2C95666400721516 /* TabBarRouterProtocol.swift */; };
+		18B1798F2C95666E00721516 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1798E2C95666E00721516 /* TabBarRouter.swift */; };
+		18B179912C95685300721516 /* TabBarViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179902C95685300721516 /* TabBarViewControllerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,10 +67,8 @@
 		187961102C76086500B573F7 /* CryptoTab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187961132C76086500B573F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187961152C76086500B573F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1879611A2C76086500B573F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1879611D2C76086500B573F7 /* CryptoTab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoTab.xcdatamodel; sourceTree = "<group>"; };
 		1879611F2C76086800B573F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		187961222C76086800B573F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		187961242C76086800B573F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		187961292C76086800B573F7 /* CryptoTabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoTabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879612D2C76086800B573F7 /* CryptoTabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTabTests.swift; sourceTree = "<group>"; };
@@ -79,8 +81,14 @@
 		187961762C78938700B573F7 /* NetworkServiceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceURL.swift; sourceTree = "<group>"; };
 		187961782C78939E00B573F7 /* NetworkServiceHTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceHTTPMethod.swift; sourceTree = "<group>"; };
 		1879617A2C7893CA00B573F7 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
-		189CDCF52C92D54000D9E927 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
-		189CDCF72C92D57100D9E927 /* MainAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssemblyProtocol.swift; sourceTree = "<group>"; };
+		18B179822C95650E00721516 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = CryptoTabTests/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
+		18B179842C9565AE00721516 /* TabBarPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarPresenterProtocol.swift; path = CryptoTabTests/TabBarPresenterProtocol.swift; sourceTree = SOURCE_ROOT; };
+		18B179862C9565BC00721516 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarPresenter.swift; path = CryptoTabTests/TabBarPresenter.swift; sourceTree = SOURCE_ROOT; };
+		18B179882C95661500721516 /* TabBarInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarInteractorProtocol.swift; path = CryptoTabTests/TabBarInteractorProtocol.swift; sourceTree = SOURCE_ROOT; };
+		18B1798A2C95661F00721516 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarInteractor.swift; path = CryptoTabTests/TabBarInteractor.swift; sourceTree = SOURCE_ROOT; };
+		18B1798C2C95666400721516 /* TabBarRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarRouterProtocol.swift; path = CryptoTabTests/TabBarRouterProtocol.swift; sourceTree = SOURCE_ROOT; };
+		18B1798E2C95666E00721516 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarRouter.swift; path = CryptoTabTests/TabBarRouter.swift; sourceTree = SOURCE_ROOT; };
+		18B179902C95685300721516 /* TabBarViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewControllerProtocol.swift; path = CryptoTabTests/TabBarViewControllerProtocol.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,7 @@
 		180BB2C12C919D3800FB4F79 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				18B1797B2C95645100721516 /* TabBarController */,
 				180BB2C22C919D4600FB4F79 /* Main */,
 			);
 			path = Moduls;
@@ -119,7 +128,6 @@
 		180BB2C22C919D4600FB4F79 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				189CDCF42C92D53200D9E927 /* MainAssembly */,
 				180BB2C82C919DEB00FB4F79 /* Router */,
 				180BB2C72C919DE300FB4F79 /* Entity */,
 				180BB2C92C919DF400FB4F79 /* Interactor */,
@@ -200,8 +208,6 @@
 				1879614B2C77601400B573F7 /* SupportingFiles */,
 				1879614A2C77600700B573F7 /* Resources */,
 				187961492C775FFB00B573F7 /* Common */,
-				187961192C76086500B573F7 /* Main.storyboard */,
-				187961212C76086800B573F7 /* LaunchScreen.storyboard */,
 			);
 			path = CryptoTab;
 			sourceTree = "<group>";
@@ -262,13 +268,59 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		189CDCF42C92D53200D9E927 /* MainAssembly */ = {
+		18B1797B2C95645100721516 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				189CDCF72C92D57100D9E927 /* MainAssemblyProtocol.swift */,
-				189CDCF52C92D54000D9E927 /* MainAssembly.swift */,
+				18B179802C9564EA00721516 /* Router */,
+				18B1797F2C9564E300721516 /* Entity */,
+				18B1797E2C9564D700721516 /* Interactor */,
+				18B1797D2C9564C900721516 /* Presenter */,
+				18B1797C2C9564C100721516 /* View */,
 			);
-			path = MainAssembly;
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		18B1797C2C9564C100721516 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18B179902C95685300721516 /* TabBarViewControllerProtocol.swift */,
+				18B179822C95650E00721516 /* TabBarViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18B1797D2C9564C900721516 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				18B179842C9565AE00721516 /* TabBarPresenterProtocol.swift */,
+				18B179862C9565BC00721516 /* TabBarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		18B1797E2C9564D700721516 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				18B179882C95661500721516 /* TabBarInteractorProtocol.swift */,
+				18B1798A2C95661F00721516 /* TabBarInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		18B1797F2C9564E300721516 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		18B179802C9564EA00721516 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				18B1798C2C95666400721516 /* TabBarRouterProtocol.swift */,
+				18B1798E2C95666E00721516 /* TabBarRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,8 +428,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				187961202C76086800B573F7 /* Assets.xcassets in Resources */,
-				187961232C76086800B573F7 /* Base in Resources */,
-				1879611B2C76086500B573F7 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,22 +455,28 @@
 				187961772C78938700B573F7 /* NetworkServiceURL.swift in Sources */,
 				187961482C77281800B573F7 /* NetworkService.swift in Sources */,
 				180BB2D32C91A0FB00FB4F79 /* MainViewProtocol.swift in Sources */,
+				18B179912C95685300721516 /* TabBarViewControllerProtocol.swift in Sources */,
+				18B179852C9565AE00721516 /* TabBarPresenterProtocol.swift in Sources */,
+				18B179872C9565BC00721516 /* TabBarPresenter.swift in Sources */,
 				187961142C76086500B573F7 /* AppDelegate.swift in Sources */,
-				189CDCF82C92D57100D9E927 /* MainAssemblyProtocol.swift in Sources */,
+				18B1798D2C95666400721516 /* TabBarRouterProtocol.swift in Sources */,
 				180BB2DC2C91B79700FB4F79 /* MainRouterProtocol.swift in Sources */,
+				18B1798B2C95661F00721516 /* TabBarInteractor.swift in Sources */,
 				180BB2CF2C919FD200FB4F79 /* MainInteractor.swift in Sources */,
 				1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */,
+				18B179832C95650E00721516 /* TabBarViewController.swift in Sources */,
 				1879617B2C7893CA00B573F7 /* NetworkServiceError.swift in Sources */,
 				187961692C776ABB00B573F7 /* CoinModel.swift in Sources */,
 				180BB2D52C91A14900FB4F79 /* MainView.swift in Sources */,
-				189CDCF62C92D54000D9E927 /* MainAssembly.swift in Sources */,
 				180BB2CB2C919F8800FB4F79 /* InteractorProtocol.swift in Sources */,
+				18B1798F2C95666E00721516 /* TabBarRouter.swift in Sources */,
 				180BB2D12C91A0CF00FB4F79 /* MainPresenter.swift in Sources */,
 				187961792C78939E00B573F7 /* NetworkServiceHTTPMethod.swift in Sources */,
 				180BB2CD2C919FAD00FB4F79 /* PresenterProtocol.swift in Sources */,
 				187961752C78936E00B573F7 /* NetworkServiceProtocols.swift in Sources */,
 				187961162C76086500B573F7 /* SceneDelegate.swift in Sources */,
 				180BB2DA2C91B78500FB4F79 /* MainRouter.swift in Sources */,
+				18B179892C95661500721516 /* TabBarInteractorProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,25 +511,6 @@
 			targetProxy = 187961342C76086800B573F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		187961192C76086500B573F7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1879611A2C76086500B573F7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		187961212C76086800B573F7 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				187961222C76086800B573F7 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1879613B2C76086800B573F7 /* Debug */ = {
@@ -605,8 +642,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CryptoTab/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
@@ -633,8 +670,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CryptoTab/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
