@@ -55,14 +55,14 @@
 		18888F122C96C28900225719 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F112C96C28900225719 /* SettingModel.swift */; };
 		18888F142C96C29900225719 /* SettingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F132C96C29900225719 /* SettingRouter.swift */; };
 		18888F162C96C2A300225719 /* SettingRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F152C96C2A300225719 /* SettingRouterProtocol.swift */; };
-		18B179832C95650E00721516 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179822C95650E00721516 /* TabBarViewController.swift */; };
-		18B179852C9565AE00721516 /* TabBarPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179842C9565AE00721516 /* TabBarPresenterProtocol.swift */; };
-		18B179872C9565BC00721516 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179862C9565BC00721516 /* TabBarPresenter.swift */; };
-		18B179892C95661500721516 /* TabBarInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179882C95661500721516 /* TabBarInteractorProtocol.swift */; };
-		18B1798B2C95661F00721516 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1798A2C95661F00721516 /* TabBarInteractor.swift */; };
-		18B1798D2C95666400721516 /* TabBarRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1798C2C95666400721516 /* TabBarRouterProtocol.swift */; };
-		18B1798F2C95666E00721516 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1798E2C95666E00721516 /* TabBarRouter.swift */; };
-		18B179912C95685300721516 /* TabBarViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B179902C95685300721516 /* TabBarViewControllerProtocol.swift */; };
+		18888F1E2C96CA7700225719 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F1D2C96CA7700225719 /* TabBarViewController.swift */; };
+		18888F202C96CA8400225719 /* TabBarViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F1F2C96CA8400225719 /* TabBarViewControllerProtocol.swift */; };
+		18888F222C96CA9500225719 /* TabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F212C96CA9500225719 /* TabBarPresenter.swift */; };
+		18888F242C96CACC00225719 /* TabBarPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F232C96CACC00225719 /* TabBarPresenterProtocol.swift */; };
+		18888F262C96CAE000225719 /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F252C96CAE000225719 /* TabBarInteractor.swift */; };
+		18888F282C96CAF900225719 /* TabBarInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F272C96CAF900225719 /* TabBarInteractorProtocol.swift */; };
+		18888F2B2C96CB1E00225719 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F2A2C96CB1E00225719 /* TabBarRouter.swift */; };
+		18888F2D2C96CB3200225719 /* TabBarRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888F2C2C96CB3200225719 /* TabBarRouterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,14 +135,14 @@
 		18888F112C96C28900225719 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		18888F132C96C29900225719 /* SettingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRouter.swift; sourceTree = "<group>"; };
 		18888F152C96C2A300225719 /* SettingRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRouterProtocol.swift; sourceTree = "<group>"; };
-		18B179822C95650E00721516 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = CryptoTabTests/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
-		18B179842C9565AE00721516 /* TabBarPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarPresenterProtocol.swift; path = CryptoTabTests/TabBarPresenterProtocol.swift; sourceTree = SOURCE_ROOT; };
-		18B179862C9565BC00721516 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarPresenter.swift; path = CryptoTabTests/TabBarPresenter.swift; sourceTree = SOURCE_ROOT; };
-		18B179882C95661500721516 /* TabBarInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarInteractorProtocol.swift; path = CryptoTabTests/TabBarInteractorProtocol.swift; sourceTree = SOURCE_ROOT; };
-		18B1798A2C95661F00721516 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarInteractor.swift; path = CryptoTabTests/TabBarInteractor.swift; sourceTree = SOURCE_ROOT; };
-		18B1798C2C95666400721516 /* TabBarRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarRouterProtocol.swift; path = CryptoTabTests/TabBarRouterProtocol.swift; sourceTree = SOURCE_ROOT; };
-		18B1798E2C95666E00721516 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarRouter.swift; path = CryptoTabTests/TabBarRouter.swift; sourceTree = SOURCE_ROOT; };
-		18B179902C95685300721516 /* TabBarViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewControllerProtocol.swift; path = CryptoTabTests/TabBarViewControllerProtocol.swift; sourceTree = SOURCE_ROOT; };
+		18888F1D2C96CA7700225719 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = CryptoTab/Moduls/SettingModule/Router/TabBarViewController.swift; sourceTree = SOURCE_ROOT; };
+		18888F1F2C96CA8400225719 /* TabBarViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerProtocol.swift; sourceTree = "<group>"; };
+		18888F212C96CA9500225719 /* TabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenter.swift; sourceTree = "<group>"; };
+		18888F232C96CACC00225719 /* TabBarPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPresenterProtocol.swift; sourceTree = "<group>"; };
+		18888F252C96CAE000225719 /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractor.swift; sourceTree = "<group>"; };
+		18888F272C96CAF900225719 /* TabBarInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractorProtocol.swift; sourceTree = "<group>"; };
+		18888F2A2C96CB1E00225719 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
+		18888F2C2C96CB3200225719 /* TabBarRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouterProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,10 +173,10 @@
 		180BB2C12C919D3800FB4F79 /* Moduls */ = {
 			isa = PBXGroup;
 			children = (
+				18888F172C96CA1100225719 /* TabBarControllerModule */,
 				18888EFE2C96C1EA00225719 /* SettingModule */,
 				18888EE52C96BC1000225719 /* PortfolioModule */,
 				18888EC82C96B63E00225719 /* NFTsModule */,
-				18B1797B2C95645100721516 /* TabBarController */,
 				180BB2C22C919D4600FB4F79 /* Main */,
 			);
 			path = Moduls;
@@ -493,57 +493,57 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		18B1797B2C95645100721516 /* TabBarController */ = {
+		18888F172C96CA1100225719 /* TabBarControllerModule */ = {
 			isa = PBXGroup;
 			children = (
-				18B179802C9564EA00721516 /* Router */,
-				18B1797F2C9564E300721516 /* Entity */,
-				18B1797E2C9564D700721516 /* Interactor */,
-				18B1797D2C9564C900721516 /* Presenter */,
-				18B1797C2C9564C100721516 /* View */,
+				18888F1C2C96CA6000225719 /* Router */,
+				18888F1B2C96CA3E00225719 /* Entity */,
+				18888F1A2C96CA3700225719 /* Interactor */,
+				18888F192C96CA3000225719 /* Presenter */,
+				18888F182C96CA2C00225719 /* View */,
 			);
-			path = TabBarController;
+			path = TabBarControllerModule;
 			sourceTree = "<group>";
 		};
-		18B1797C2C9564C100721516 /* View */ = {
+		18888F182C96CA2C00225719 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18B179902C95685300721516 /* TabBarViewControllerProtocol.swift */,
-				18B179822C95650E00721516 /* TabBarViewController.swift */,
+				18888F1D2C96CA7700225719 /* TabBarViewController.swift */,
+				18888F1F2C96CA8400225719 /* TabBarViewControllerProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		18B1797D2C9564C900721516 /* Presenter */ = {
+		18888F192C96CA3000225719 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				18B179842C9565AE00721516 /* TabBarPresenterProtocol.swift */,
-				18B179862C9565BC00721516 /* TabBarPresenter.swift */,
+				18888F212C96CA9500225719 /* TabBarPresenter.swift */,
+				18888F232C96CACC00225719 /* TabBarPresenterProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		18B1797E2C9564D700721516 /* Interactor */ = {
+		18888F1A2C96CA3700225719 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				18B179882C95661500721516 /* TabBarInteractorProtocol.swift */,
-				18B1798A2C95661F00721516 /* TabBarInteractor.swift */,
+				18888F252C96CAE000225719 /* TabBarInteractor.swift */,
+				18888F272C96CAF900225719 /* TabBarInteractorProtocol.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		18B1797F2C9564E300721516 /* Entity */ = {
+		18888F1B2C96CA3E00225719 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		18B179802C9564EA00721516 /* Router */ = {
+		18888F1C2C96CA6000225719 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				18B1798C2C95666400721516 /* TabBarRouterProtocol.swift */,
-				18B1798E2C95666E00721516 /* TabBarRouter.swift */,
+				18888F2A2C96CB1E00225719 /* TabBarRouter.swift */,
+				18888F2C2C96CB3200225719 /* TabBarRouterProtocol.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -682,42 +682,43 @@
 				187961482C77281800B573F7 /* NetworkService.swift in Sources */,
 				18888EF92C96BCDD00225719 /* PortfolioModel.swift in Sources */,
 				180BB2D32C91A0FB00FB4F79 /* MainViewProtocol.swift in Sources */,
-				18B179912C95685300721516 /* TabBarViewControllerProtocol.swift in Sources */,
-				18B179852C9565AE00721516 /* TabBarPresenterProtocol.swift in Sources */,
 				18888EDC2C96B74B00225719 /* NFTsInteractor.swift in Sources */,
 				18888F0A2C96C25300225719 /* SettingPresenter.swift in Sources */,
 				18888EDE2C96B75400225719 /* NFTsInteractorProtocol.swift in Sources */,
-				18B179872C9565BC00721516 /* TabBarPresenter.swift in Sources */,
 				18888EDA2C96B73200225719 /* NFTsPresenterProtocol.swift in Sources */,
 				187961142C76086500B573F7 /* AppDelegate.swift in Sources */,
-				18B1798D2C95666400721516 /* TabBarRouterProtocol.swift in Sources */,
 				18888F102C96C27C00225719 /* SettingInteractorProtocol.swift in Sources */,
+				18888F222C96CA9500225719 /* TabBarPresenter.swift in Sources */,
 				18888EE22C96B77B00225719 /* NFTsRouter.swift in Sources */,
+				18888F1E2C96CA7700225719 /* TabBarViewController.swift in Sources */,
 				180BB2DC2C91B79700FB4F79 /* MainRouterProtocol.swift in Sources */,
 				18888ED62C96B71100225719 /* NFTsViewControllerProtocol.swift in Sources */,
 				18888EF42C96BCB800225719 /* PortfolioInteractor.swift in Sources */,
-				18B1798B2C95661F00721516 /* TabBarInteractor.swift in Sources */,
 				180BB2CF2C919FD200FB4F79 /* MainInteractor.swift in Sources */,
 				1879611E2C76086500B573F7 /* CryptoTab.xcdatamodeld in Sources */,
-				18B179832C95650E00721516 /* TabBarViewController.swift in Sources */,
 				1879617B2C7893CA00B573F7 /* NetworkServiceError.swift in Sources */,
 				18888EE42C96B78700225719 /* NFTsRouterProtocol.swift in Sources */,
 				187961692C776ABB00B573F7 /* CoinModel.swift in Sources */,
 				18888F062C96C23600225719 /* SettingViewController.swift in Sources */,
+				18888F262C96CAE000225719 /* TabBarInteractor.swift in Sources */,
 				180BB2D52C91A14900FB4F79 /* MainView.swift in Sources */,
 				18888EF02C96BC9900225719 /* PortfolioPresenter.swift in Sources */,
+				18888F202C96CA8400225719 /* TabBarViewControllerProtocol.swift in Sources */,
+				18888F2B2C96CB1E00225719 /* TabBarRouter.swift in Sources */,
 				18888F0E2C96C27000225719 /* SettingInteractor.swift in Sources */,
 				18888ED82C96B72100225719 /* NFTsPresenter.swift in Sources */,
+				18888F2D2C96CB3200225719 /* TabBarRouterProtocol.swift in Sources */,
 				180BB2CB2C919F8800FB4F79 /* InteractorProtocol.swift in Sources */,
 				18888EE02C96B76700225719 /* NFTsModel.swift in Sources */,
-				18B1798F2C95666E00721516 /* TabBarRouter.swift in Sources */,
 				18888F0C2C96C25D00225719 /* SettingPresenterProtocol.swift in Sources */,
+				18888F242C96CACC00225719 /* TabBarPresenterProtocol.swift in Sources */,
 				18888EEC2C96BC5E00225719 /* PortfolioViewController.swift in Sources */,
 				18888F142C96C29900225719 /* SettingRouter.swift in Sources */,
 				18888EEE2C96BC6B00225719 /* PortfolioViewControllerProtocol.swift in Sources */,
 				180BB2D12C91A0CF00FB4F79 /* MainPresenter.swift in Sources */,
 				187961792C78939E00B573F7 /* NetworkServiceHTTPMethod.swift in Sources */,
 				180BB2CD2C919FAD00FB4F79 /* PresenterProtocol.swift in Sources */,
+				18888F282C96CAF900225719 /* TabBarInteractorProtocol.swift in Sources */,
 				18888F082C96C23F00225719 /* SettingViewControllerProtocol.swift in Sources */,
 				18888ED42C96B6FE00225719 /* NFTsViewController.swift in Sources */,
 				187961752C78936E00B573F7 /* NetworkServiceProtocols.swift in Sources */,
@@ -728,7 +729,6 @@
 				18888EFD2C96BD0100225719 /* PortfolioRouterProtocol.swift in Sources */,
 				18888EFB2C96BCF600225719 /* PortfolioRouter.swift in Sources */,
 				180BB2DA2C91B78500FB4F79 /* MainRouter.swift in Sources */,
-				18B179892C95661500721516 /* TabBarInteractorProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
