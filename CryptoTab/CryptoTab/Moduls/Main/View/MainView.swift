@@ -25,7 +25,8 @@ final class MainView: UIViewController, MainViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        interactor?.fetchDataNetwork()
+        //presenter?.fetchDataFromNetwork()
+        //interactor?.fetchDataNetwork()
     }
     
     func displayData(_ data: Welcome) {
