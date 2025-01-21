@@ -9,7 +9,6 @@ final class MarketCoordinator: Coordinator {
 
     func start() {
         let marketViewController = MarketViewController()
-        print("MarketViewController")
         navigationController.pushViewController(marketViewController, animated: false)
     }
 }

@@ -10,9 +10,6 @@ final class HomeCoordinator: Coordinator {
 
     func start() {
         let homeViewController = HomeViewController()
-        print("HomeViewController")
         navigationController.pushViewController(homeViewController, animated: false)
-        }
     }
-
-
+}

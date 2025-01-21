@@ -10,14 +10,12 @@ final class TabBarCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
 
-        // Создаем дочерние координаторы
         let homeNavController = UINavigationController()
         let marketNavController = UINavigationController()
 
         self.homeCoordinator = HomeCoordinator(navigationController: homeNavController)
         self.marketCoordinator = MarketCoordinator(navigationController: marketNavController)
 
-        // Инициализируем TabBarController
         self.tabBarController = TabBarController(
             homeCoordinator: homeCoordinator,
             marketCoordinator: marketCoordinator

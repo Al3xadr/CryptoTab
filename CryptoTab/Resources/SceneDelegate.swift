@@ -15,12 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let navigationController = UINavigationController()
-        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
-        tabBarCoordinator.start()
+        let homeNavController = CustomNavigationController()
+        let marketNavController = CustomNavigationController()
+
+        let homeCoordinator = HomeCoordinator(navigationController: homeNavController)
+        let marketCoordinator = MarketCoordinator(navigationController: marketNavController)
+
+        let tabBarController = TabBarController(
+            homeCoordinator: homeCoordinator,
+            marketCoordinator: marketCoordinator
+        )
 
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = navigationController
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
         self.window = window
     }

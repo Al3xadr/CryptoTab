@@ -1,8 +1,7 @@
 import UIKit
 
-
 final class TabBarController: UITabBarController {
-    
+
     private let homeCoordinator: HomeCoordinator
     private let marketCoordinator: MarketCoordinator
 
@@ -26,6 +25,8 @@ final class TabBarController: UITabBarController {
 // MARK: - TabBar Setup
 extension TabBarController {
     private func setupTabBar() {
+        let floatingTabBar = FloatingTabBar()
+        setValue(floatingTabBar, forKey: "tabBar") 
         tabBar.tintColor = AppColors.activeElements
         tabBar.backgroundColor = AppColors.mainBackgroundColor
         tabBar.barTintColor = AppColors.mainBackgroundColor
@@ -34,22 +35,25 @@ extension TabBarController {
     }
 
     private func setupViewControllers() {
+
+        // Запуск координаторов
         homeCoordinator.start()
         marketCoordinator.start()
 
-        // Настраиваем TabBarItem для каждого контроллера
+        // Настраиваем вкладки
         homeCoordinator.navigationController.tabBarItem = UITabBarItem(
-            title: "Home",
+            title: nil,
             image: UIImage(systemName: "house"),
             selectedImage: UIImage(systemName: "house.fill")
         )
 
         marketCoordinator.navigationController.tabBarItem = UITabBarItem(
-            title: "Market",
+            title: nil,
             image: UIImage(systemName: "handbag"),
             selectedImage: UIImage(systemName: "handbag.fill")
         )
 
+        // Устанавливаем контроллеры
         viewControllers = [
             homeCoordinator.navigationController,
             marketCoordinator.navigationController
