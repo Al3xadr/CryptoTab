@@ -12,8 +12,6 @@ final class FloatingTabBar: UITabBar {
     override func layoutSubviews() {
         super.layoutSubviews()
         setupTabBarlayout()
-
-
     }
 
 }
