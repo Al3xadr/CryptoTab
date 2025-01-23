@@ -14,11 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
+        
+        let container = DependencyContainer()
         let homeNavController = CustomNavigationController()
         let marketNavController = CustomNavigationController()
 
-        let homeCoordinator = HomeCoordinator(navigationController: homeNavController)
+        let homeCoordinator = HomeCoordinator(navigationController: homeNavController, homeViewModel: container.homeViewModel)
         let marketCoordinator = MarketCoordinator(navigationController: marketNavController)
 
         let tabBarController = TabBarController(
