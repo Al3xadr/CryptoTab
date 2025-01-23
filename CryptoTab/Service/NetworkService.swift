@@ -2,7 +2,7 @@ import UIKit
 
 
 
-final class NetworkService: NetworkServiceProtocols {
+final class NetworkService: NetworkServiceProtocol {
     
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()

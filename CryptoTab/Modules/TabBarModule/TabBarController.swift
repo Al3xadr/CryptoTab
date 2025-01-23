@@ -23,8 +23,8 @@ final class TabBarController: UITabBarController {
 }
 
 // MARK: - TabBar Setup
-extension TabBarController {
-    private func setupTabBar() {
+private extension TabBarController {
+    func setupTabBar() {
         let floatingTabBar = FloatingTabBar()
         setValue(floatingTabBar, forKey: "tabBar") 
         tabBar.tintColor = AppColors.activeElements
@@ -34,7 +34,7 @@ extension TabBarController {
         tabBar.isTranslucent = true
     }
 
-    private func setupViewControllers() {
+    func setupViewControllers() {
 
         // Запуск координаторов
         homeCoordinator.start()

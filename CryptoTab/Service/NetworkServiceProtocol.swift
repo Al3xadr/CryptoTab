@@ -1,7 +1,7 @@
 import UIKit
 
 
-protocol NetworkServiceProtocols {
+protocol NetworkServiceProtocol {
     
     func fetchData<T: Codable>(url: URL,
                                httpMethod: HTTPMethod,
