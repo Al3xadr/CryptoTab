@@ -92,3 +92,42 @@ struct NftData: Codable {
         case sparkline, content
     }
 }
+extension Welcome {
+    func toHomeCoinModels() -> [HomeCoinModel] {
+        return coins.compactMap { coin in
+            guard
+                let url = URL(string: coin.item.large),
+                let price = coin.item.data.price as? Double,
+                let priceChange24h = coin.item.data.priceChangePercentage24H?["24h"]
+            else { return nil }
+            
+            return HomeCoinModel(
+                id: coin.item.id,
+                name: coin.item.name,
+                image: url,
+                currentPrice: String(format: "%.2f", price),
+                priceChange24h: String(format: "%.2f", priceChange24h),
+                priceChangePercentage24h: String(format: "%.2f", priceChange24h), // Adjust if another field is used
+                marketCapChangePercentage24h: "N/A" // Replace with actual field if present
+            )
+        }
+    }
+    
+    func toHomeNFTModels() -> [HomeNFTModel] {
+        return nfts.compactMap { nft in
+            guard
+                let url = URL(string: nft.thumb),
+                let price = nft.floorPriceInNativeCurrency as? Double
+            else { return nil }
+            
+            return HomeNFTModel(
+                id: nft.id,
+                name: nft.name,
+                image: url,
+                currentPrice: String(format: "%.2f", price),
+                priceChange24h: "N/A", // Replace with actual field if present
+                priceChangePercentage24h: String(format: "%.2f", nft.floorPrice24HPercentageChange)
+            )
+        }
+    }
+}
