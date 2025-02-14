@@ -12,6 +12,7 @@ final class NetworkService: NetworkServiceProtocol {
                       httpMethod: HTTPMethod,
                       body: (any Encodable)?,
                       headers: [String : String]?,
+                      apiKey: String?,
                       completion: @escaping (Result<T, NetworkError>)
                       -> Void) where T : Decodable, T : Encodable {
         
@@ -29,6 +30,14 @@ final class NetworkService: NetworkServiceProtocol {
         headers?.forEach{ key, value in
             request.setValue(value, forHTTPHeaderField: key)
         }
+        var modifiedHeaders = headers ?? [:]
+        modifiedHeaders["Accept"] = "application/json"
+        modifiedHeaders["x-api-key"] = apiKey 
+
+        modifiedHeaders.forEach { key, value in
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+
         
         
         session.dataTask(with: request) { data, response, error in

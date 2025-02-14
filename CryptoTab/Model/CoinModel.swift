@@ -1,132 +1,73 @@
 import UIKit
 
-struct Welcome: Codable {
-    let coins: [Coin]
-    let nfts: [Nft]
-}
-
-// MARK: - Coin
-struct Coin: Codable {
-    let item: Item
-}
-
-// MARK: - Item
-struct Item: Codable {
-    let id: String
-    let coinID: Int
-    let name, symbol: String
-    let marketCapRank: Int
-    let thumb, small, large: String
-    let slug: String
-    let priceBtc: Double
-    let score: Int
-    let data: ItemData
+struct CoinElement: Codable {
+    let id, symbol, name: String
+    let image: String
+    let currentPrice: Double
+    let marketCap, marketCapRank, fullyDilutedValuation, totalVolume: Int
+    let high24H, low24H, priceChange24H, priceChangePercentage24H: Double
+    let marketCapChange24H, marketCapChangePercentage24H, circulatingSupply, totalSupply: Double
+    let maxSupply: Double?
+    let ath, athChangePercentage: Double
+    let athDate: String
+    let atl, atlChangePercentage: Double
+    let atlDate: String
+    let roi: Roi?
+    let lastUpdated: String
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case coinID = "coin_id"
-        case name, symbol
-        case marketCapRank = "market_cap_rank"
-        case thumb, small, large, slug
-        case priceBtc = "price_btc"
-        case score, data
-    }
-}
-
-// MARK: - ItemData
-struct ItemData: Codable {
-    let price: Double
-    let priceBtc: String
-    let priceChangePercentage24H: [String: Double]?
-    let marketCap, marketCapBtc, totalVolume, totalVolumeBtc: String?
-    let sparkline: String?
-    let content: Content?
-
-    enum CodingKeys: String, CodingKey {
-        case price
-        case priceBtc = "price_btc"
-        case priceChangePercentage24H = "price_change_percentage_24h"
+        case id, symbol, name, image
+        case currentPrice = "current_price"
         case marketCap = "market_cap"
-        case marketCapBtc = "market_cap_btc"
+        case marketCapRank = "market_cap_rank"
+        case fullyDilutedValuation = "fully_diluted_valuation"
         case totalVolume = "total_volume"
-        case totalVolumeBtc = "total_volume_btc"
-        case sparkline, content
+        case high24H = "high_24h"
+        case low24H = "low_24h"
+        case priceChange24H = "price_change_24h"
+        case priceChangePercentage24H = "price_change_percentage_24h"
+        case marketCapChange24H = "market_cap_change_24h"
+        case marketCapChangePercentage24H = "market_cap_change_percentage_24h"
+        case circulatingSupply = "circulating_supply"
+        case totalSupply = "total_supply"
+        case maxSupply = "max_supply"
+        case ath
+        case athChangePercentage = "ath_change_percentage"
+        case athDate = "ath_date"
+        case atl
+        case atlChangePercentage = "atl_change_percentage"
+        case atlDate = "atl_date"
+        case roi
+        case lastUpdated = "last_updated"
     }
 }
 
-// MARK: - Content
-struct Content: Codable {
-    let title, description: String
+// MARK: - Roi
+struct Roi: Codable {
+    let times: Double
+    let currency: Currency
+    let percentage: Double
 }
 
-// MARK: - Nft
-struct Nft: Codable {
-    let id, name, symbol: String
-    let thumb: String
-    let nftContractID: Int
-    let nativeCurrencySymbol: String
-    let floorPriceInNativeCurrency, floorPrice24HPercentageChange: Double
-    let data: NftData
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, symbol, thumb
-        case nftContractID = "nft_contract_id"
-        case nativeCurrencySymbol = "native_currency_symbol"
-        case floorPriceInNativeCurrency = "floor_price_in_native_currency"
-        case floorPrice24HPercentageChange = "floor_price_24h_percentage_change"
-        case data
-    }
+enum Currency: String, Codable {
+    case btc = "btc"
+    case eth = "eth"
+    case usd = "usd"
 }
 
-// MARK: - NftData
-struct NftData: Codable {
-    let floorPrice, floorPriceInUsd24HPercentageChange, h24Volume, h24AverageSalePrice: String?
-    let sparkline: String?
-    let content: Content?
-
-    enum CodingKeys: String, CodingKey {
-        case floorPrice = "floor_price"
-        case floorPriceInUsd24HPercentageChange = "floor_price_in_usd_24h_percentage_change"
-        case h24Volume = "h24_volume"
-        case h24AverageSalePrice = "h24_average_sale_price"
-        case sparkline, content
-    }
-}
-extension Welcome {
+extension Array where Element == CoinElement {
     func toHomeCoinModels() -> [HomeCoinModel] {
-        return coins.compactMap { coin in
-            guard
-                let url = URL(string: coin.item.large),
-                let price = coin.item.data.price as? Double,
-                let priceChange24h = coin.item.data.priceChangePercentage24H?["24h"]
-            else { return nil }
-            
+        return self.compactMap { coin in
+            guard let url = URL(string: coin.image) else { return nil }
+
             return HomeCoinModel(
-                id: coin.item.id,
-                name: coin.item.name,
+                id: coin.id,
+                name: coin.name,
                 image: url,
-                currentPrice: String(format: "%.2f", price),
-                priceChange24h: String(format: "%.2f", priceChange24h),
-                priceChangePercentage24h: String(format: "%.2f", priceChange24h), // Adjust if another field is used
-                marketCapChangePercentage24h: "N/A" // Replace with actual field if present
-            )
-        }
-    }
-    
-    func toHomeNFTModels() -> [HomeNFTModel] {
-        return nfts.compactMap { nft in
-            guard
-                let url = URL(string: nft.thumb),
-                let price = nft.floorPriceInNativeCurrency as? Double
-            else { return nil }
-            
-            return HomeNFTModel(
-                id: nft.id,
-                name: nft.name,
-                image: url,
-                currentPrice: String(format: "%.2f", price),
-                priceChange24h: "N/A", // Replace with actual field if present
-                priceChangePercentage24h: String(format: "%.2f", nft.floorPrice24HPercentageChange)
+                currentPrice: String(format: "%.2f", coin.currentPrice),
+                priceChange24h: String(format: "%.2f", coin.priceChange24H),
+                priceChangePercentage24h: String(format: "%.2f%%", coin.priceChangePercentage24H),
+                marketCapChangePercentage24h: String(format: "%.2f%%", coin.marketCapChangePercentage24H)
             )
         }
     }

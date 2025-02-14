@@ -1,53 +1,95 @@
 import UIKit
 
 protocol HomeViewModelProtocol {
-    var onDataUpdate: (() -> Void)? { get set } // Callback для уведомления об обновлении данных
-    var coinModels: [HomeCoinModel] { get }    // Преобразованные данные о монетах
-    var nftModels: [HomeNFTModel] { get }      // Преобразованные данные о NFT
-    func getNetwrokData()
+    var onDataUpdate: (() -> Void)? { get set }
+    var coinModels: [HomeCoinModel] { get }
+    var nftModels: [NFTsElement] { get }
+    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void)
+    func getNetworkData()
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
+    
     private var networkService: NetworkServiceProtocol
-    private let api = API.getTrendingCoin
+    private let apiCoins = API.getTrendingCoin
+    private let apiNFTs = API.getTrendingNFTs
+    private let nftApiKey = API.NftApiKey
     
     // Хранилища данных
     private(set) var coinModels: [HomeCoinModel] = []
-    private(set) var nftModels: [HomeNFTModel] = []
+    private(set) var nftModels: [NFTsElement] = []
     
-    // Callback для уведомления о новых данных
+    // Кэш изображений
+    private var imageCache = NSCache<NSURL, UIImage>()
     var onDataUpdate: (() -> Void)?
     
     init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
     
-    func getNetwrokData() {
-        guard let url = api.url else { return }
+    func getNetworkData() {
+        guard let coinURL = apiCoins.url, let nftURL = apiNFTs.url else { return }
         
-        networkService.fetchData(url: url, httpMethod: .get, body: nil, headers: [:]) { [weak self] (result: Result<Welcome, NetworkError>) in
+        let dispatchGroup = DispatchGroup()
+        var coins: [CoinElement] = []
+        var nfts: [NFTsElement] = []
+        
+        dispatchGroup.enter()
+        networkService.fetchData(url: coinURL, httpMethod: .get, body: nil, headers: ["accept": "application/json"], apiKey: nil) { [weak self] (result: Result<[CoinElement], NetworkError>) in
             switch result {
-            case .success(let data):
-                self?.processData(data)
-            case .failure(let failure):
-                self?.handleError(failure)
+            case .success(let fetchedCoins):
+                coins = fetchedCoins
+            case .failure(let error):
+                self?.handleError(error)
             }
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        networkService.fetchData(url: nftURL, httpMethod: .get, body: nil, headers: ["accept": "application/json"], apiKey: nftApiKey) { [weak self] (result: Result<NFTResponse, NetworkError>) in
+            switch result {
+            case .success(let fetchedNFTResponse):
+                nfts = fetchedNFTResponse.collections
+            case .failure(let error):
+                self?.handleError(error)
+            }
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.processData(coins, nfts)
         }
     }
     
-    private func processData(_ data: Welcome) {
-        // Преобразование данных
-        self.coinModels = data.toHomeCoinModels()
-        self.nftModels = data.toHomeNFTModels()
-        
-        // Уведомление об обновлении данных
-        DispatchQueue.main.async { [weak self] in
-            self?.onDataUpdate?()
-        }
+    private func processData(_ coinData: [CoinElement], _ nftCollections: [NFTsElement]) {
+        self.coinModels = coinData.toHomeCoinModels()
+        self.nftModels = nftCollections
+        onDataUpdate?()
     }
     
     private func handleError(_ error: NetworkError) {
-        // Обработка ошибок (например, логирование)
         print("Error occurred: \(error)")
+    }
+    
+    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        if let cachedImage = imageCache.object(forKey: url as NSURL) {
+            DispatchQueue.main.async {
+                completion(cachedImage)
+            }
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self, let data = data, error == nil, let image = UIImage(data: data) else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
+            }
+            
+            self.imageCache.setObject(image, forKey: url as NSURL)
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        }.resume()
     }
 }

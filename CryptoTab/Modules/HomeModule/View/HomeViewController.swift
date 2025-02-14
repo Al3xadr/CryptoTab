@@ -1,8 +1,8 @@
 import UIKit
 final class HomeViewController: UIViewController {
     // MARK: - ViewModel init()
-    private let homeViewModel: HomeViewModelProtocol?
-    
+    private var homeViewModel: HomeViewModelProtocol?
+    private var sections = SectionModelCoin.allCases
     init(homeViewModel: HomeViewModelProtocol) {
         self.homeViewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
@@ -26,10 +26,15 @@ final class HomeViewController: UIViewController {
     }()
     
     private let collectionView: UICollectionView = {
-        let layout = UICollectionViewLayout() // Placeholder layout
+        let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DefaultCell")
+        collectionView.register(CoinHomeCell.self, forCellWithReuseIdentifier: CoinHomeCell.cell)
+        collectionView.register(NftHomeCell.self, forCellWithReuseIdentifier: NftHomeCell.cell)
+        collectionView.register(MainCoinCell.self, forCellWithReuseIdentifier: MainCoinCell.cell)
+        collectionView.register(HeaderSupplementaryView.self, forSupplementaryViewOfKind:
+                                    UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: HeaderSupplementaryView.cell)
         return collectionView
     }()
     
@@ -41,7 +46,12 @@ final class HomeViewController: UIViewController {
         setupConstraints()
         setupCollectionView()
         applyInitialSnapshot()
+        homeViewModel?.getNetworkData()
+        homeViewModel?.onDataUpdate = { [weak self] in
+            self?.applyInitialSnapshot()
+        }
     }
+    
 }
 
 // MARK: - Setup Methods
@@ -58,7 +68,7 @@ private extension HomeViewController {
             NewsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             NewsView.heightAnchor.constraint(equalToConstant: 40),
             
-            collectionView.topAnchor.constraint(equalTo: NewsView.bottomAnchor, constant: -10),
+            collectionView.topAnchor.constraint(equalTo: NewsView.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -66,63 +76,189 @@ private extension HomeViewController {
     }
     
     func setupCollectionView() {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            return self.createSectionLayout(for: sectionIndex)
-        }
-        collectionView.collectionViewLayout = layout
+        collectionView.collectionViewLayout = makeCollectionViewLayout()
     }
     
 }
-//MARK: - DataSource applyInitialSnapshot()
-private extension HomeViewController {
-    
-    func setupDataSource() -> DataSource {
-        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, item in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCell", for: indexPath)
-            switch item {
-            case .coin(let coinModel):
-                cell.contentView.backgroundColor = .blue // Configure your cell for a coin
-                // Add your cell configuration logic using coinModel
-            case .nft(let nftModel):
-                cell.contentView.backgroundColor = .green // Configure your cell for an NFT
-                // Add your cell configuration logic using nftModel
+
+extension HomeViewController {
+    func makeCollectionViewLayout() -> UICollectionViewLayout { UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
+            switch self?.sections[sectionIndex] {
+            case .bestCoin:
+                return self?.createBestCoinSection()
+            case .coins:
+                return self?.createCoinSection()
+            case .nfts:
+                return self?.createNftsSection()
+            default:
+                return nil
             }
-            return cell
         }
-        return dataSource
     }
-    
-    func createSectionLayout(for sectionIndex: Int) -> NSCollectionLayoutSection? {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(100))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
+    private func createLayoutSection(group: NSCollectionLayoutGroup,
+                                     behavior: UICollectionLayoutSectionOrthogonalScrollingBehavior,
+                                     interGroupSpasing: CGFloat,
+                                     supplementaryItems: [NSCollectionLayoutBoundarySupplementaryItem])
+    -> NSCollectionLayoutSection {
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.interGroupSpacing = 10
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.orthogonalScrollingBehavior = behavior
+        section.interGroupSpacing = interGroupSpasing
+        section.boundarySupplementaryItems = supplementaryItems
+        return section
+    }
+    // MARK: - Layout BestCoin
+    private func createBestCoinSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize:
+                .init(widthDimension: .fractionalWidth(1),
+                      heightDimension: .fractionalHeight(1)))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize:
+                .init(widthDimension: .fractionalWidth(0.9),
+                      heightDimension: .fractionalHeight(0.30)),
+                                                       subitems: [item])
+        let section = createLayoutSection(group: group,
+                                          behavior: .none,
+                                          interGroupSpasing: 5,
+                                          supplementaryItems: [])
+        section.contentInsets = .init(top: 5, leading: 20, bottom: 10, trailing: -20)
+        return section
+    }
+    // MARK: - Layout TopCoin
+    private func createCoinSection() -> NSCollectionLayoutSection {
+        // Создание элемента
+        let item = NSCollectionLayoutItem(layoutSize:
+                .init(widthDimension: .fractionalWidth(1),
+                      heightDimension: .fractionalHeight(1)))
+
+        // Горизонтальная группа для списка монет
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize:
+                .init(widthDimension: .fractionalWidth(0.4), // Чтобы было две монеты на экране
+                      heightDimension: .absolute(100)),
+                                                       subitems: [item])
+
+        // Создание секции
+        let section = createLayoutSection(group: group,
+                                          behavior: .continuous, // Горизонтальный скролл
+                                          interGroupSpasing: 10,
+                                          supplementaryItems: [createSupplementaryItems()])
+        
+        section.orthogonalScrollingBehavior = .continuous // Включаем горизонтальный скроллинг
+        section.contentInsets = .init(top: 5, leading: 20, bottom: 40, trailing: 20)
         
         return section
+    }
+
+    private func createNftsSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize:
+                .init(widthDimension: .fractionalWidth(0.45),
+                      heightDimension: .fractionalHeight(0.9)))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize:
+                .init(widthDimension: .fractionalWidth(1),
+                      heightDimension: .fractionalHeight(0.2)),
+                                                       subitems: [item])
+        group.interItemSpacing = .flexible(20)
+        let section = createLayoutSection(group: group,
+                                          behavior: .none,
+                                          interGroupSpasing: 5,
+                                          supplementaryItems: [createSupplementaryItems()])
+        section.contentInsets = .init(top: 40, leading: 20, bottom: 0, trailing: 20)
+        return section
+    }
+    private func createSupplementaryItems() -> NSCollectionLayoutBoundarySupplementaryItem {
+        .init(layoutSize:
+                .init(widthDimension: .fractionalWidth(1),
+                      heightDimension: .estimated(40)),
+              elementKind: UICollectionView.elementKindSectionHeader,
+              alignment: .top)
+    }
+}
+//MARK: - DataSource applyInitialSnapshot()
+private extension HomeViewController {
+    func setupDataSource() -> DataSource {
+        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, item in
+            switch item {
+            case .bestCoin(let bestCoinModel):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCoinCell.cell, for: indexPath) as? MainCoinCell else {
+                    fatalError("Unable to dequeue CoinHomeCell")
+                }
+                // Настройте ячейку с данными coinModel
+                cell.configure(with: self.homeViewModel, imageUrl: bestCoinModel.image, name: bestCoinModel.name) // Пример конфигурации
+                return cell
+            case .coin(let coinModel):
+                // Используем CoinHomeCell для типа coin
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinHomeCell.cell, for: indexPath) as? CoinHomeCell else {
+                    fatalError("Unable to dequeue CoinHomeCell")
+                }
+                // Настройте ячейку с данными coinModel
+                cell.configure(with: self.homeViewModel, name: coinModel.name, imageUrl: coinModel.image) // Пример конфигурации
+                return cell
+                
+            case .nft(let nftModel):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NftHomeCell.cell, for: indexPath) as? NftHomeCell else {
+                    fatalError("Unable to dequeue NftHomeCell")
+                }
+                cell.configure(with: self.homeViewModel, nftModel: nftModel)
+                return cell
+            }
+        }
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard let sectionKind = SectionModelCoin(rawValue: indexPath.section) else {
+                return UICollectionReusableView() // Return a default view instead of nil
+            }
+            
+            switch sectionKind {
+            case .coins:
+                guard let cell = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: HeaderSupplementaryView.cell,
+                    for: indexPath
+                ) as? HeaderSupplementaryView else {
+                    return UICollectionReusableView() // Return default if casting fails
+                }
+                cell.configureHeader(categoryName: "Top")
+                return cell
+                
+            case .nfts:
+                guard let cell = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: HeaderSupplementaryView.cell,
+                    for: indexPath
+                ) as? HeaderSupplementaryView else {
+                    return UICollectionReusableView()
+                }
+                cell.configureHeader(categoryName: "NFTs")
+                return cell
+                
+            default:
+                return UICollectionReusableView() // Ensure a view is always returned
+            }
+        }
+
+        return dataSource
     }
     
     func applyInitialSnapshot() {
         var snapshot = DataSourceSnapshot()
 
-        // Add sections
-        snapshot.appendSections([.coins, .nfts])
+        // Добавляем секции
+        snapshot.appendSections([.bestCoin, .coins, .nfts]) // Добавили .bestCoin
 
-        // Add items to sections
-        let coinModels = [HomeCoinModel(id: "1", name: "Bitcoin", image: URL(string: "https://example.com")!, currentPrice: "30,000", priceChange24h: "500", priceChangePercentage24h: "1.5%", marketCapChangePercentage24h: "2.0%")]
-        let nftModels = [HomeNFTModel(id: "1", name: "Cool NFT", image: URL(string: "https://example.com")!, currentPrice: "0.5 ETH", priceChange24h: "0.1", priceChangePercentage24h: "20%")]
+        // Проверяем, что модели существуют
+        guard let coinModels = homeViewModel?.coinModels else { return }
+        guard let nftModels = homeViewModel?.nftModels else { return }
 
-        let coinItems = coinModels.map { HomeModel.coin($0) }
-        let nftItems = nftModels.map { HomeModel.nft($0) }
+        // Преобразуем модели в элементы для snapshot
+        let bestCoinItems: [HomeModel] = coinModels.prefix(1).map { HomeModel.coin($0) } // Первый элемент - лучший
+        let coinItems: [HomeModel] = coinModels.dropFirst().map { HomeModel.coin($0) } // Остальные в .coins
+        let nftItems: [HomeModel] = nftModels.map { HomeModel.nft($0.toHomeNFTsModel()) }
+// Все NFT
 
+        // Добавляем элементы в соответствующие секции
+        snapshot.appendItems(bestCoinItems, toSection: .bestCoin)
         snapshot.appendItems(coinItems, toSection: .coins)
         snapshot.appendItems(nftItems, toSection: .nfts)
 
+        // Применяем snapshot
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+
 }

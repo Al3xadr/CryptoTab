@@ -7,6 +7,7 @@ protocol NetworkServiceProtocol {
                                httpMethod: HTTPMethod,
                                body: Encodable?,
                                headers: [String: String]?,
+                               apiKey: String?,
                                completion: @escaping(Result<T, NetworkError>)
                                -> Void  )
 }
