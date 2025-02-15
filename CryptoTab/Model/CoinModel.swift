@@ -58,16 +58,17 @@ enum Currency: String, Codable {
 extension Array where Element == CoinElement {
     func toHomeCoinModels() -> [HomeCoinModel] {
         return self.compactMap { coin in
-            guard let url = URL(string: coin.image) else { return nil }
 
             return HomeCoinModel(
-                id: coin.id,
+                symbol: coin.symbol,
                 name: coin.name,
-                image: url,
-                currentPrice: String(format: "%.2f", coin.currentPrice),
-                priceChange24h: String(format: "%.2f", coin.priceChange24H),
-                priceChangePercentage24h: String(format: "%.2f%%", coin.priceChangePercentage24H),
-                marketCapChangePercentage24h: String(format: "%.2f%%", coin.marketCapChangePercentage24H)
+                image: coin.image,
+                marketCap: String(coin.marketCap),
+                fullyDilutedValuation: String(coin.fullyDilutedValuation),
+                currentPrice: String(coin.currentPrice),
+                priceChange24h: String(coin.priceChange24H),
+                priceChangePercentage24h: String(format: "%.2f", coin.priceChangePercentage24H),
+                marketCapChangePercentage24h: String(coin.marketCapChangePercentage24H)
             )
         }
     }
