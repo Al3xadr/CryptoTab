@@ -77,16 +77,18 @@ final class HomeViewModel: HomeViewModelProtocol {
             }
             return
         }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let self = self, let data = data, error == nil, let image = UIImage(data: data) else {
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil, let image = UIImage(data: data) else {
                 DispatchQueue.main.async {
                     completion(nil)
                 }
                 return
             }
-            
+
+            // Кэшируем изображение
             self.imageCache.setObject(image, forKey: url as NSURL)
+            
             DispatchQueue.main.async {
                 completion(image)
             }
