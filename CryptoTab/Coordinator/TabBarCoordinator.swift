@@ -24,6 +24,7 @@ final class TabBarCoordinator: Coordinator {
     }
 
     func start() {
+        
         navigationController.setViewControllers([tabBarController], animated: false)
     }
 }

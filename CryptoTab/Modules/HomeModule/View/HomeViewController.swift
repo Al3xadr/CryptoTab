@@ -3,6 +3,7 @@ final class HomeViewController: UIViewController {
     // MARK: - ViewModel init()
     private var homeViewModel: HomeViewModelProtocol?
     private var sections = SectionModelCoin.allCases
+    var onItemSelected: ((HomeModel) -> Void)?
     init(homeViewModel: HomeViewModelProtocol) {
         self.homeViewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
@@ -52,6 +53,7 @@ final class HomeViewController: UIViewController {
         homeViewModel?.onDataUpdate = { [weak self] in
             self?.applyInitialSnapshot()
         }
+        
     }
     
 }
@@ -78,6 +80,7 @@ private extension HomeViewController {
     }
     
     func setupCollectionView() {
+        collectionView.delegate = self
         collectionView.collectionViewLayout = makeCollectionViewLayout()
     }
     
@@ -126,18 +129,13 @@ extension HomeViewController {
     }
     // MARK: - Layout TopCoin
     private func createCoinSection() -> NSCollectionLayoutSection {
-        // Создание элемента
         let item = NSCollectionLayoutItem(layoutSize:
                 .init(widthDimension: .fractionalWidth(1),
                       heightDimension: .fractionalHeight(1)))
-
-        // Горизонтальная группа для списка монет
         let group = NSCollectionLayoutGroup.horizontal(layoutSize:
                 .init(widthDimension: .fractionalWidth(0.5),
                       heightDimension: .absolute(120)),
                                                        subitems: [item])
-
-        // Создание секции
         let section = createLayoutSection(group: group,
                                           behavior: .continuous,
                                           interGroupSpasing: 0,
@@ -245,7 +243,10 @@ private extension HomeViewController {
 
         let bestCoinItems: [HomeModel] = coinModels.prefix(1).map { HomeModel.bestCoin($0) }
         let coinItems: [HomeModel] = coinModels.dropFirst().map { HomeModel.coin($0) }
-        let nftItems: [HomeModel] = nftModels.map { HomeModel.nft($0.toHomeNFTsModel()) }
+        
+        // Фильтруем NFT, убирая те, у которых пустой URL
+        let filteredNftModels = nftModels.filter { !($0.imageURL?.isEmpty ?? true) }
+        let nftItems: [HomeModel] = filteredNftModels.map { HomeModel.nft($0.toHomeNFTsModel()) }
 
         snapshot.appendItems(bestCoinItems, toSection: .bestCoin)
         snapshot.appendItems(coinItems, toSection: .coins)
@@ -254,4 +255,12 @@ private extension HomeViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 
+
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        onItemSelected?(item) // Вызываем замыкание и передаём выбранную модель
+    }
 }
