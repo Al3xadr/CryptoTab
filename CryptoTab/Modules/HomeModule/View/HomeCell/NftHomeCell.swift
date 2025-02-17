@@ -15,11 +15,11 @@ final class NftHomeCell: UICollectionViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.shadowColor = UIColor(.black).cgColor
-        view.layer.shadowOpacity = 0.2 // Прозрачность тени (от 0 до 1)
-        view.layer.shadowOffset = CGSize(width: 0, height: 2) // Смещение тени (ширина и высота)
-        view.layer.shadowRadius = 6.0 // Размытие тени (радиус)
-        view.layer.cornerRadius = 8.0 // Радиус скругления углов
-        view.clipsToBounds = true // Обрезаем содержимое, выходящее за пределы границ
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 6.0
+        view.layer.cornerRadius = 8.0
+        view.clipsToBounds = true
         
         return view
     }()

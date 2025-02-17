@@ -59,3 +59,8 @@ extension CustomNavigationBar {
         searchButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }
+extension CustomNavigationBar {
+    func hideLogo(_ hidden: Bool) {
+        logoImageView.isHidden = hidden
+    }
+}

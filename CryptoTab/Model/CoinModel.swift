@@ -66,7 +66,7 @@ extension Array where Element == CoinElement {
                 marketCap: String(coin.marketCap),
                 fullyDilutedValuation: String(coin.fullyDilutedValuation),
                 currentPrice: String(coin.currentPrice),
-                priceChange24h: String(coin.priceChange24H),
+                priceChange24h: String(format: "%.2f", coin.priceChange24H),
                 priceChangePercentage24h: String(format: "%.2f", coin.priceChangePercentage24H),
                 marketCapChangePercentage24h: String(coin.marketCapChangePercentage24H)
             )
