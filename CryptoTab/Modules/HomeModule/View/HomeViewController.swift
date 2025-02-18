@@ -3,6 +3,8 @@ final class HomeViewController: UIViewController {
     // MARK: - ViewModel init()
     private var homeViewModel: HomeViewModelProtocol?
     private var sections = SectionModelCoin.allCases
+    private let refreshControl = UIRefreshControl()
+    
     var onItemSelected: ((HomeModel) -> Void)?
     init(homeViewModel: HomeViewModelProtocol) {
         self.homeViewModel = homeViewModel
@@ -82,6 +84,9 @@ private extension HomeViewController {
     func setupCollectionView() {
         collectionView.delegate = self
         collectionView.collectionViewLayout = makeCollectionViewLayout()
+        
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
 }
@@ -253,8 +258,17 @@ private extension HomeViewController {
 
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+}
 
-
+private extension HomeViewController {
+    // Добавляем метод для обновления данных при pull-to-refresh
+    @objc func refreshData() {
+        homeViewModel?.getNetworkData() // Запрос на обновление данных
+        homeViewModel?.onDataUpdate = { [weak self] in
+            self?.applyInitialSnapshot()
+            self?.refreshControl.endRefreshing() // Останавливаем анимацию обновления
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate {

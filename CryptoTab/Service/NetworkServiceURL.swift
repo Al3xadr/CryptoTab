@@ -4,7 +4,7 @@ struct API {
     static let getTrendingCoin = API(urlString: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false")
     
     static let getTrendingNFTs = API(urlString: "https://api.opensea.io/api/v2/collections?chain=ethereum&limit=100")
-    static let NftApiKey = ""
+    static let NftApiKey = "f147630f3e284a7b9c6c37ad50c7705e"
     let urlString: String
     
     var url: URL? {

@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class HomeDetailNftsViewController: UIViewController {
+final class DetailNftsViewController: UIViewController {
     private var homeViewModel: HomeViewModelProtocol
     private let viewModel: DetailViewModel
 
@@ -54,7 +54,7 @@ final class HomeDetailNftsViewController: UIViewController {
     }
 }
 
-extension HomeDetailNftsViewController {
+extension DetailNftsViewController {
     func configure(with nftModel: HomeNFTsModel) {
         nameLabel.text = nftModel.name
         if let imageUrlString = nftModel.imageURL, let imageUrl = URL(string: imageUrlString) {
@@ -66,7 +66,7 @@ extension HomeDetailNftsViewController {
         }
     }
 }
-private extension HomeDetailNftsViewController {
+private extension DetailNftsViewController {
     func setupViews() {
         view.addSubview(iconImageView)
         view.addSubview(nameLabel)
@@ -88,7 +88,7 @@ private extension HomeDetailNftsViewController {
     }
 }
 
-private extension HomeDetailNftsViewController {
+private extension DetailNftsViewController {
     func setupNavigationControllerViewWillAppear() {
         (navigationController?.navigationBar as? CustomNavigationBar)?.hideLogo(true)
         navigationController?.navigationBar.titleTextAttributes = [
