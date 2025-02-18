@@ -4,9 +4,10 @@ struct CoinElement: Codable {
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
-    let marketCap, marketCapRank, fullyDilutedValuation, totalVolume: Int
-    let high24H, low24H, priceChange24H, priceChangePercentage24H: Double
-    let marketCapChange24H, marketCapChangePercentage24H, circulatingSupply, totalSupply: Double
+    let marketCap, marketCapRank, fullyDilutedValuation: Int
+    let totalVolume, high24H, low24H, priceChange24H: Double
+    let priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H, circulatingSupply: Double
+    let totalSupply: Double
     let maxSupply: Double?
     let ath, athChangePercentage: Double
     let athDate: String
@@ -60,6 +61,7 @@ extension Array where Element == CoinElement {
         return self.compactMap { coin in
 
             return HomeCoinModel(
+                id: coin.id,
                 symbol: coin.symbol,
                 name: coin.name,
                 image: coin.image,

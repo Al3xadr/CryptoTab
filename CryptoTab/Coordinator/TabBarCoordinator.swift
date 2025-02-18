@@ -3,18 +3,20 @@ import UIKit
 final class TabBarCoordinator: Coordinator {
     var navigationController: UINavigationController
     private let homeViewModel: HomeViewModelProtocol
+    private let detailNetworkViewModel: DetailNetworkViewModelProtocol
     private let tabBarController: TabBarController
 
     private let homeCoordinator: HomeCoordinator
     private let marketCoordinator: MarketCoordinator
 
-    init(navigationController: UINavigationController, homeViewModel: HomeViewModelProtocol) {
+    init(navigationController: UINavigationController, homeViewModel: HomeViewModelProtocol, detailNetworkViewModel: DetailNetworkViewModel) {
         self.navigationController = navigationController
         self.homeViewModel = homeViewModel
+        self.detailNetworkViewModel = detailNetworkViewModel
         let homeNavController = UINavigationController()
         let marketNavController = UINavigationController()
 
-        self.homeCoordinator = HomeCoordinator(navigationController: homeNavController, homeViewModel: homeViewModel)
+        self.homeCoordinator = HomeCoordinator(navigationController: homeNavController, homeViewModel: homeViewModel, detailNetworkViewModel: detailNetworkViewModel)
         self.marketCoordinator = MarketCoordinator(navigationController: marketNavController)
 
         self.tabBarController = TabBarController(

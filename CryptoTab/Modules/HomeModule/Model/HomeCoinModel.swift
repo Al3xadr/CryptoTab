@@ -1,15 +1,9 @@
-//
-//  HomeCoinModel.swift
-//  CryptoTab
-//
-//  Created by Alexandr on 23.01.2025.
-//
-
 
 import Foundation
 
 struct HomeCoinModel: Hashable {
     let identifier: UUID = UUID()
+    let id: String
     let symbol: String
     let name: String
     let image: String?

@@ -5,11 +5,13 @@ final class HomeCoordinator: Coordinator {
     var navigationController: UINavigationController
     private let homeViewModel: HomeViewModelProtocol
     private let detailCoordinator: DetailCoordinator  // 👈 Добавили DetailCoordinator
+    private let detailNetworkViewModel: DetailNetworkViewModelProtocol
 
-    init(navigationController: UINavigationController, homeViewModel: HomeViewModelProtocol) {
+    init(navigationController: UINavigationController, homeViewModel: HomeViewModelProtocol, detailNetworkViewModel: DetailNetworkViewModelProtocol) {
         self.navigationController = navigationController
         self.homeViewModel = homeViewModel
-        self.detailCoordinator = DetailCoordinator(navigationController: navigationController, homeViewModel: homeViewModel) // 👈 Инициализация
+        self.detailNetworkViewModel = detailNetworkViewModel
+        self.detailCoordinator = DetailCoordinator(navigationController: navigationController, homeViewModel: homeViewModel, detailNetworkViewModel: detailNetworkViewModel) // 👈 Инициализация
     }
 
     func start() {

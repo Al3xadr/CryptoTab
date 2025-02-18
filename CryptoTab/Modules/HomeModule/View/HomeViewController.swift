@@ -244,7 +244,6 @@ private extension HomeViewController {
         let bestCoinItems: [HomeModel] = coinModels.prefix(1).map { HomeModel.bestCoin($0) }
         let coinItems: [HomeModel] = coinModels.dropFirst().map { HomeModel.coin($0) }
         
-        // Фильтруем NFT, убирая те, у которых пустой URL
         let filteredNftModels = nftModels.filter { !($0.imageURL?.isEmpty ?? true) }
         let nftItems: [HomeModel] = filteredNftModels.map { HomeModel.nft($0.toHomeNFTsModel()) }
 
@@ -261,6 +260,6 @@ private extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        onItemSelected?(item) // Вызываем замыкание и передаём выбранную модель
+        onItemSelected?(item)
     }
 }
