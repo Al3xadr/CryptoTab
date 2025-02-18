@@ -2,7 +2,7 @@
 import UIKit
 
 final class HomeDetailNftsViewController: UIViewController {
-    private var homeViewModel: HomeViewModelProtocol?
+    private var homeViewModel: HomeViewModelProtocol
     private let viewModel: DetailViewModel
 
     init(viewModel: DetailViewModel, homeViewModel: HomeViewModelProtocol) {
@@ -58,7 +58,7 @@ extension HomeDetailNftsViewController {
     func configure(with nftModel: HomeNFTsModel) {
         nameLabel.text = nftModel.name
         if let imageUrlString = nftModel.imageURL, let imageUrl = URL(string: imageUrlString) {
-            homeViewModel?.loadImage(from: imageUrl) { [weak self] image in
+            homeViewModel.loadImage(from: imageUrl) { [weak self] image in
                 DispatchQueue.main.async {
                     self?.iconImageView.image = image
                 }

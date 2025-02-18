@@ -156,7 +156,7 @@ extension MainCoinCell {
         self.viewModel = viewModel
         nameLabel.text = coinModel.name
         currentPrice.text = "\(coinModel.currentPrice)$"
-        fullyDilutedValuation.text = "\(coinModel.fullyDilutedValuation)$"
+        fullyDilutedValuation.text = "\(formatNumber(Double(coinModel.fullyDilutedValuation) ?? 0))$"
         priceСhange24h.text = "\(coinModel.priceChange24h)$"
         priceChangePercentage24h.text = "\(coinModel.priceChangePercentage24h)%"
         
@@ -176,5 +176,11 @@ extension MainCoinCell {
                 }
             }
         }
+    }
+    private func formatNumber(_ number: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: number)) ?? "\(number)"
     }
 }

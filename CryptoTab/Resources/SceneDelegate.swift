@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let homeNavController = CustomNavigationController()
         let marketNavController = CustomNavigationController()
 
-        let homeCoordinator = HomeCoordinator(navigationController: homeNavController, homeViewModel: container.homeViewModel)
+        let homeCoordinator = HomeCoordinator(navigationController: homeNavController, homeViewModel: container.homeViewModel, detailNetworkViewModel: container.detailNetworkViewModel)
         let marketCoordinator = MarketCoordinator(navigationController: marketNavController)
 
         let tabBarController = TabBarController(
