@@ -3,6 +3,9 @@ final class HomeViewController: UIViewController {
     // MARK: - ViewModel init()
     private var homeViewModel: HomeViewModelProtocol?
     private var sections = SectionModelCoin.allCases
+    private let refreshControl = UIRefreshControl()
+    
+    var onItemSelected: ((HomeModel) -> Void)?
     init(homeViewModel: HomeViewModelProtocol) {
         self.homeViewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
@@ -29,12 +32,14 @@ final class HomeViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(CoinHomeCell.self, forCellWithReuseIdentifier: CoinHomeCell.cell)
-        collectionView.register(NftHomeCell.self, forCellWithReuseIdentifier: NftHomeCell.cell)
         collectionView.register(MainCoinCell.self, forCellWithReuseIdentifier: MainCoinCell.cell)
+        collectionView.register(CoinHomeCell.self, forCellWithReuseIdentifier: CoinHomeCell.cell)
+
+        collectionView.register(NftHomeCell.self, forCellWithReuseIdentifier: NftHomeCell.cell)
         collectionView.register(HeaderSupplementaryView.self, forSupplementaryViewOfKind:
                                     UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: HeaderSupplementaryView.cell)
+        
         return collectionView
     }()
     
@@ -50,6 +55,7 @@ final class HomeViewController: UIViewController {
         homeViewModel?.onDataUpdate = { [weak self] in
             self?.applyInitialSnapshot()
         }
+        
     }
     
 }
@@ -76,7 +82,11 @@ private extension HomeViewController {
     }
     
     func setupCollectionView() {
+        collectionView.delegate = self
         collectionView.collectionViewLayout = makeCollectionViewLayout()
+        
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
 }
@@ -110,7 +120,7 @@ extension HomeViewController {
     private func createBestCoinSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize:
                 .init(widthDimension: .fractionalWidth(1),
-                      heightDimension: .fractionalHeight(1)))
+                      heightDimension: .fractionalHeight(0.9)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize:
                 .init(widthDimension: .fractionalWidth(0.9),
                       heightDimension: .fractionalHeight(0.30)),
@@ -119,30 +129,25 @@ extension HomeViewController {
                                           behavior: .none,
                                           interGroupSpasing: 5,
                                           supplementaryItems: [])
-        section.contentInsets = .init(top: 5, leading: 20, bottom: 10, trailing: -20)
+        section.contentInsets = .init(top: 5, leading: 20, bottom: 0, trailing: -20)
         return section
     }
     // MARK: - Layout TopCoin
     private func createCoinSection() -> NSCollectionLayoutSection {
-        // Создание элемента
         let item = NSCollectionLayoutItem(layoutSize:
                 .init(widthDimension: .fractionalWidth(1),
                       heightDimension: .fractionalHeight(1)))
-
-        // Горизонтальная группа для списка монет
         let group = NSCollectionLayoutGroup.horizontal(layoutSize:
-                .init(widthDimension: .fractionalWidth(0.4), // Чтобы было две монеты на экране
-                      heightDimension: .absolute(100)),
+                .init(widthDimension: .fractionalWidth(0.5),
+                      heightDimension: .absolute(120)),
                                                        subitems: [item])
-
-        // Создание секции
         let section = createLayoutSection(group: group,
-                                          behavior: .continuous, // Горизонтальный скролл
-                                          interGroupSpasing: 10,
+                                          behavior: .continuous,
+                                          interGroupSpasing: 0,
                                           supplementaryItems: [createSupplementaryItems()])
         
-        section.orthogonalScrollingBehavior = .continuous // Включаем горизонтальный скроллинг
-        section.contentInsets = .init(top: 5, leading: 20, bottom: 40, trailing: 20)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: 5, leading: 20, bottom: 10, trailing: 10)
         
         return section
     }
@@ -160,7 +165,7 @@ extension HomeViewController {
                                           behavior: .none,
                                           interGroupSpasing: 5,
                                           supplementaryItems: [createSupplementaryItems()])
-        section.contentInsets = .init(top: 40, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = .init(top: 5, leading: 20, bottom: 0, trailing: 20)
         return section
     }
     private func createSupplementaryItems() -> NSCollectionLayoutBoundarySupplementaryItem {
@@ -180,16 +185,13 @@ private extension HomeViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCoinCell.cell, for: indexPath) as? MainCoinCell else {
                     fatalError("Unable to dequeue CoinHomeCell")
                 }
-                // Настройте ячейку с данными coinModel
-                cell.configure(with: self.homeViewModel, imageUrl: bestCoinModel.image, name: bestCoinModel.name) // Пример конфигурации
+                cell.configure(with: self.homeViewModel, coinModel: bestCoinModel)
                 return cell
             case .coin(let coinModel):
-                // Используем CoinHomeCell для типа coin
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinHomeCell.cell, for: indexPath) as? CoinHomeCell else {
                     fatalError("Unable to dequeue CoinHomeCell")
                 }
-                // Настройте ячейку с данными coinModel
-                cell.configure(with: self.homeViewModel, name: coinModel.name, imageUrl: coinModel.image) // Пример конфигурации
+                cell.configure(with: self.homeViewModel, coinModel: coinModel)
                 return cell
                 
             case .nft(let nftModel):
@@ -202,7 +204,7 @@ private extension HomeViewController {
         }
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             guard let sectionKind = SectionModelCoin(rawValue: indexPath.section) else {
-                return UICollectionReusableView() // Return a default view instead of nil
+                return UICollectionReusableView()
             }
             
             switch sectionKind {
@@ -212,9 +214,9 @@ private extension HomeViewController {
                     withReuseIdentifier: HeaderSupplementaryView.cell,
                     for: indexPath
                 ) as? HeaderSupplementaryView else {
-                    return UICollectionReusableView() // Return default if casting fails
+                    return UICollectionReusableView()
                 }
-                cell.configureHeader(categoryName: "Top")
+                cell.configureHeader(categoryName: "Top Coins")
                 return cell
                 
             case .nfts:
@@ -229,7 +231,7 @@ private extension HomeViewController {
                 return cell
                 
             default:
-                return UICollectionReusableView() // Ensure a view is always returned
+                return UICollectionReusableView()
             }
         }
 
@@ -239,26 +241,39 @@ private extension HomeViewController {
     func applyInitialSnapshot() {
         var snapshot = DataSourceSnapshot()
 
-        // Добавляем секции
-        snapshot.appendSections([.bestCoin, .coins, .nfts]) // Добавили .bestCoin
+        snapshot.appendSections([.bestCoin, .coins, .nfts])
 
-        // Проверяем, что модели существуют
         guard let coinModels = homeViewModel?.coinModels else { return }
         guard let nftModels = homeViewModel?.nftModels else { return }
 
-        // Преобразуем модели в элементы для snapshot
-        let bestCoinItems: [HomeModel] = coinModels.prefix(1).map { HomeModel.coin($0) } // Первый элемент - лучший
-        let coinItems: [HomeModel] = coinModels.dropFirst().map { HomeModel.coin($0) } // Остальные в .coins
-        let nftItems: [HomeModel] = nftModels.map { HomeModel.nft($0.toHomeNFTsModel()) }
-// Все NFT
+        let bestCoinItems: [HomeModel] = coinModels.prefix(1).map { HomeModel.bestCoin($0) }
+        let coinItems: [HomeModel] = coinModels.dropFirst().map { HomeModel.coin($0) }
+        
+        let filteredNftModels = nftModels.filter { !($0.imageURL?.isEmpty ?? true) }
+        let nftItems: [HomeModel] = filteredNftModels.map { HomeModel.nft($0.toHomeNFTsModel()) }
 
-        // Добавляем элементы в соответствующие секции
         snapshot.appendItems(bestCoinItems, toSection: .bestCoin)
         snapshot.appendItems(coinItems, toSection: .coins)
         snapshot.appendItems(nftItems, toSection: .nfts)
 
-        // Применяем snapshot
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+}
 
+private extension HomeViewController {
+    // Добавляем метод для обновления данных при pull-to-refresh
+    @objc func refreshData() {
+        homeViewModel?.getNetworkData() // Запрос на обновление данных
+        homeViewModel?.onDataUpdate = { [weak self] in
+            self?.applyInitialSnapshot()
+            self?.refreshControl.endRefreshing() // Останавливаем анимацию обновления
+        }
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        onItemSelected?(item)
+    }
 }

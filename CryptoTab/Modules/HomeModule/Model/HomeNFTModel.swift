@@ -17,12 +17,10 @@ struct HomeNFTsModel: Hashable {
         let chain: String
     }
 
-    // ✅ Добавляем `hash(into:)`
     func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
     }
 
-    // ✅ Добавляем сравнение
     static func == (lhs: HomeNFTsModel, rhs: HomeNFTsModel) -> Bool {
         return lhs.identifier == rhs.identifier
     }

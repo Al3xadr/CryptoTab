@@ -4,9 +4,10 @@ struct CoinElement: Codable {
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
-    let marketCap, marketCapRank, fullyDilutedValuation, totalVolume: Int
-    let high24H, low24H, priceChange24H, priceChangePercentage24H: Double
-    let marketCapChange24H, marketCapChangePercentage24H, circulatingSupply, totalSupply: Double
+    let marketCap, marketCapRank, fullyDilutedValuation: Int
+    let totalVolume, high24H, low24H, priceChange24H: Double
+    let priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H, circulatingSupply: Double
+    let totalSupply: Double
     let maxSupply: Double?
     let ath, athChangePercentage: Double
     let athDate: String
@@ -58,16 +59,18 @@ enum Currency: String, Codable {
 extension Array where Element == CoinElement {
     func toHomeCoinModels() -> [HomeCoinModel] {
         return self.compactMap { coin in
-            guard let url = URL(string: coin.image) else { return nil }
 
             return HomeCoinModel(
                 id: coin.id,
+                symbol: coin.symbol,
                 name: coin.name,
-                image: url,
-                currentPrice: String(format: "%.2f", coin.currentPrice),
+                image: coin.image,
+                marketCap: String(coin.marketCap),
+                fullyDilutedValuation: String(coin.fullyDilutedValuation),
+                currentPrice: String(coin.currentPrice),
                 priceChange24h: String(format: "%.2f", coin.priceChange24H),
-                priceChangePercentage24h: String(format: "%.2f%%", coin.priceChangePercentage24H),
-                marketCapChangePercentage24h: String(format: "%.2f%%", coin.marketCapChangePercentage24H)
+                priceChangePercentage24h: String(format: "%.2f", coin.priceChangePercentage24H),
+                marketCapChangePercentage24h: String(coin.marketCapChangePercentage24H)
             )
         }
     }
