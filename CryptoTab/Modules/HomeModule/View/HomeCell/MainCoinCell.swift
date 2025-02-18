@@ -155,8 +155,8 @@ extension MainCoinCell {
     func configure(with viewModel: HomeViewModelProtocol?, coinModel: HomeCoinModel) {
         self.viewModel = viewModel
         nameLabel.text = coinModel.name
-        currentPrice.text = "\(coinModel.currentPrice)$"
-        fullyDilutedValuation.text = "\(formatNumber(Double(coinModel.fullyDilutedValuation) ?? 0))$"
+        currentPrice.text = "💰 \(coinModel.currentPrice)$"
+        fullyDilutedValuation.text = "🏦  \(formatNumber(Double(coinModel.fullyDilutedValuation) ?? 0))$"
         priceСhange24h.text = "\(coinModel.priceChange24h)$"
         priceChangePercentage24h.text = "\(coinModel.priceChangePercentage24h)%"
         

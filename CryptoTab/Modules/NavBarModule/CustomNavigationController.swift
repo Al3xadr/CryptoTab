@@ -15,8 +15,4 @@ private extension CustomNavigationController {
         view.backgroundColor = AppColors.mainBackgroundColor
     }
 }
-private extension CustomNavigationController {
-    func setSearchAction(target: Any, action: Selector) {
-        customNavigationBar.setSearchAction(target: target, action: action)
-    }
-}
+

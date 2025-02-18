@@ -27,7 +27,7 @@ final class DetailCoordinator: Coordinator {
 
         case .nft(let nftModel):
             let detailViewModel = DetailViewModel(coin: nil, nft: nftModel)
-            let detailViewController = HomeDetailNftsViewController(viewModel: detailViewModel, homeViewModel: homeViewModel)
+            let detailViewController = DetailNftsViewController(viewModel: detailViewModel, homeViewModel: homeViewModel)
             detailViewController.configure(with: nftModel)
             navigationController.pushViewController(detailViewController, animated: true)
         }
