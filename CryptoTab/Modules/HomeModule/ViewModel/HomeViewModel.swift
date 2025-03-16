@@ -15,7 +15,6 @@ final class HomeViewModel: HomeViewModelProtocol {
     private let apiNFTs = API.getTrendingNFTs
     private let nftApiKey = API.NftApiKey
     
-    // Хранилища данных
     private(set) var coinModels: [HomeCoinModel] = []
     private(set) var nftModels: [NFTsElement] = []
     
@@ -86,7 +85,6 @@ final class HomeViewModel: HomeViewModelProtocol {
                 return
             }
 
-            // Кэшируем изображение
             self.imageCache.setObject(image, forKey: url as NSURL)
             
             DispatchQueue.main.async {

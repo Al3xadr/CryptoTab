@@ -4,7 +4,7 @@ final class CustomNavigationBar: UINavigationBar {
     
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Vector")// Укажите своё изображение
+        imageView.image = UIImage(named: "Vector")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

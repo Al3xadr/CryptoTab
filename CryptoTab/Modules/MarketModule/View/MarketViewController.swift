@@ -5,8 +5,8 @@ final class MarketViewController: UIViewController {
     private var viewModel: MarketViewModelProtocol
     private let refreshControl = UIRefreshControl()
     
-    init(viewModel: MarketViewModelProtocol) {
-        self.viewModel = viewModel
+    init(container: DependencyContainer) {
+        self.viewModel = container.getMarketViewModel
         super.init(nibName: nil, bundle: nil)
     }
     

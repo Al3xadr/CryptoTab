@@ -6,8 +6,8 @@ final class HomeViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     
     var onItemSelected: ((HomeModel) -> Void)?
-    init(homeViewModel: HomeViewModelProtocol) {
-        self.homeViewModel = homeViewModel
+    init(container: DependencyContainer) {
+        self.homeViewModel = container.getHomeViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -261,12 +261,11 @@ private extension HomeViewController {
 }
 
 private extension HomeViewController {
-    // Добавляем метод для обновления данных при pull-to-refresh
     @objc func refreshData() {
-        homeViewModel?.getNetworkData() // Запрос на обновление данных
+        homeViewModel?.getNetworkData()
         homeViewModel?.onDataUpdate = { [weak self] in
             self?.applyInitialSnapshot()
-            self?.refreshControl.endRefreshing() // Останавливаем анимацию обновления
+            self?.refreshControl.endRefreshing()
         }
     }
 }

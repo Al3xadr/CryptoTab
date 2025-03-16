@@ -2,33 +2,28 @@ import UIKit
 
 final class DetailCoordinator: Coordinator {
     var navigationController: UINavigationController
-    private let homeViewModel: HomeViewModelProtocol
-    private let detailNetworkViewModel: DetailNetworkViewModelProtocol
+    private let container: DependencyContainer
 
-    init(navigationController: UINavigationController, homeViewModel: HomeViewModelProtocol, detailNetworkViewModel: DetailNetworkViewModelProtocol) {
+    init(navigationController: UINavigationController, container: DependencyContainer) {
         self.navigationController = navigationController
-        self.homeViewModel = homeViewModel
-        self.detailNetworkViewModel = detailNetworkViewModel
+        self.container = container
     }
+
     func start() {
         let placeholderVC = UIViewController()
         placeholderVC.view.backgroundColor = .white
-        placeholderVC.title = " Eror "
+        placeholderVC.title = "Error"
         navigationController.pushViewController(placeholderVC, animated: false)
     }
-    
+
     func showDetail(for item: HomeModel) {
         switch item {
         case .bestCoin(let coinModel), .coin(let coinModel):
-            let detailViewModel = DetailViewModel(coin: coinModel, nft: nil)
-            let detailViewController = CoinDetailViewController(viewModel: detailViewModel, homeViewModel: homeViewModel, networkViewModel: detailNetworkViewModel as! DetailNetworkViewModel)
-            detailViewController.configure(with: coinModel)
+            let detailViewController = container.coinDetailViewController(coin: coinModel)
             navigationController.pushViewController(detailViewController, animated: true)
 
         case .nft(let nftModel):
-            let detailViewModel = DetailViewModel(coin: nil, nft: nftModel)
-            let detailViewController = DetailNftsViewController(viewModel: detailViewModel, homeViewModel: homeViewModel)
-            detailViewController.configure(with: nftModel)
+            let detailViewController = container.detailNftsViewController(nft: nftModel)
             navigationController.pushViewController(detailViewController, animated: true)
         }
     }

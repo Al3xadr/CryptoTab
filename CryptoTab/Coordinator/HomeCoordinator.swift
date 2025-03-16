@@ -3,21 +3,19 @@ import UIKit
 
 final class HomeCoordinator: Coordinator {
     var navigationController: UINavigationController
-    private let homeViewModel: HomeViewModelProtocol
-    private let detailCoordinator: DetailCoordinator  // 👈 Добавили DetailCoordinator
-    private let detailNetworkViewModel: DetailNetworkViewModelProtocol
+    private let container: DependencyContainer
+    private let detailCoordinator: DetailCoordinator
 
-    init(navigationController: UINavigationController, homeViewModel: HomeViewModelProtocol, detailNetworkViewModel: DetailNetworkViewModelProtocol) {
+    init(navigationController: UINavigationController, container: DependencyContainer) {
         self.navigationController = navigationController
-        self.homeViewModel = homeViewModel
-        self.detailNetworkViewModel = detailNetworkViewModel
-        self.detailCoordinator = DetailCoordinator(navigationController: navigationController, homeViewModel: homeViewModel, detailNetworkViewModel: detailNetworkViewModel) // 👈 Инициализация
+        self.container = container
+        self.detailCoordinator = DetailCoordinator(navigationController: navigationController, container: container)
     }
 
     func start() {
-        let homeViewController = HomeViewController(homeViewModel: homeViewModel)
+        let homeViewController = container.homeViewController
         homeViewController.onItemSelected = { [weak self] item in
-            self?.detailCoordinator.showDetail(for: item) // 👈 Используем DetailCoordinator
+            self?.detailCoordinator.showDetail(for: item)
         }
         navigationController.pushViewController(homeViewController, animated: false)
     }

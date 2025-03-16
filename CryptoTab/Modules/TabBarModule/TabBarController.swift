@@ -35,12 +35,8 @@ private extension TabBarController {
     }
 
     func setupViewControllers() {
-
-        // Запуск координаторов
         homeCoordinator.start()
         marketCoordinator.start()
-
-        // Настраиваем вкладки
         homeCoordinator.navigationController.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(systemName: "house"),
@@ -53,7 +49,6 @@ private extension TabBarController {
             selectedImage: UIImage(systemName: "handbag.fill")
         )
 
-        // Устанавливаем контроллеры
         viewControllers = [
             homeCoordinator.navigationController,
             marketCoordinator.navigationController
