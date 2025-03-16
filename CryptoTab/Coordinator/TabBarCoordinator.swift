@@ -2,25 +2,20 @@ import UIKit
 
 final class TabBarCoordinator: Coordinator {
     var navigationController: UINavigationController
-    private let homeViewModel: HomeViewModelProtocol
-    private let detailNetworkViewModel: DetailNetworkViewModelProtocol
-    private let marketViewModel: MarketViewModelProtocol
+    private let container: DependencyContainer
     private let tabBarController: TabBarController
-
     private let homeCoordinator: HomeCoordinator
     private let marketCoordinator: MarketCoordinator
 
-    init(navigationController: UINavigationController, homeViewModel: HomeViewModelProtocol, detailNetworkViewModel: DetailNetworkViewModel, marketViewModel: MarketViewModelProtocol) {
+    init(navigationController: UINavigationController, container: DependencyContainer) {
         self.navigationController = navigationController
-        self.homeViewModel = homeViewModel
-        self.detailNetworkViewModel = detailNetworkViewModel
-        self.marketViewModel = marketViewModel
+        self.container = container
         
         let homeNavController = UINavigationController()
         let marketNavController = UINavigationController()
 
-        self.homeCoordinator = HomeCoordinator(navigationController: homeNavController, homeViewModel: homeViewModel, detailNetworkViewModel: detailNetworkViewModel)
-        self.marketCoordinator = MarketCoordinator(navigationController: marketNavController, marketViewModel: marketViewModel)
+        self.homeCoordinator = HomeCoordinator(navigationController: homeNavController, container: container)
+        self.marketCoordinator = MarketCoordinator(navigationController: marketNavController, container: container)
 
         self.tabBarController = TabBarController(
             homeCoordinator: homeCoordinator,
@@ -29,7 +24,7 @@ final class TabBarCoordinator: Coordinator {
     }
 
     func start() {
-        
         navigationController.setViewControllers([tabBarController], animated: false)
     }
 }
+
